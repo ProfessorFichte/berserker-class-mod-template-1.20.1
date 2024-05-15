@@ -1,0 +1,53 @@
+{
+  "itemGroup.berserker_rpg.general": "Berserker",
+
+  "item.berserker_rpg.berserker_spell_book": "Древний Рунический Том",
+
+  "item.berserker_rpg.flint_berserker_axe": "Кремневая Секира",
+  "item.berserker_rpg.stone_berserker_axe": "Каменная Секира",
+  "item.berserker_rpg.iron_berserker_axe": "Железная Секира",
+  "item.berserker_rpg.golden_berserker_axe": "Золотая Секира",
+  "item.berserker_rpg.diamond_berserker_axe": "Алмазная Секира",
+  "item.berserker_rpg.netherite_berserker_axe": "Незеритовая Секира",
+  "item.berserker_rpg.frozen_berserker_axe": "Скандинавский Секира",
+  "item.berserker_rpg.thunder_berserker_axe": "Секира Торанна",
+  "item.berserker_rpg.soul_berserker_axe": "Проклятая Секира",
+
+  "item.berserker_rpg.wildling_head": "Шлем Одичалого",
+  "item.berserker_rpg.wildling_chest": "Нагрудник Одичалого",
+  "item.berserker_rpg.wildling_legs": "Поножи Одичалого",
+  "item.berserker_rpg.wildling_feet": "Ботинки Одичалого",
+  "item.berserker_rpg.northling_head": "Шлем Северянина",
+  "item.berserker_rpg.northling_chest": "Нагрудник Северянина",
+  "item.berserker_rpg.northling_legs": "Поножи Северянина",
+  "item.berserker_rpg.northling_feet": "Ботинки Северянина",
+
+  "effect.berserker_rpg.rage": "Ярость",
+  "effect.berserker_rpg.rage.description": "Чем меньше у вас здоровья, тем больше вы наносите урона. Может увеличить эффект от попадания.",
+  "effect.berserker_rpg.soul_devourer": "Пожиратель Душ",
+  "effect.berserker_rpg.soul_devourer.description": "Собирает души, когда убивает свои цели.",
+
+  "spell.berserker_rpg.wild_rage.name": "Дикая Ярость",
+  "spell.berserker_rpg.wild_rage.description": "Дикая Ярость пугает цели на {effect_duration} секунды и дает заклинателю эффект Ярости.",
+  "spell.berserker_rpg.bloody_strike.name": "Кровавый Удар",
+  "spell.berserker_rpg.bloody_strike.description": "Наносит {damage} физического урона, восстанавливает заклинателя наполовину от нанесенного урона.",
+  "spell.berserker_rpg.nordic_storm.name": "Северный Шторм",
+  "spell.berserker_rpg.nordic_storm.description": "Вращающаяся атака, которая наносит целям {damage}_0 физического урона и {damage}_1 ледяного урона в секунду.",
+  "spell.berserker_rpg.undertow.name": "Откат",
+  "spell.berserker_rpg.undertow.description": "Бросок оружия, нанося физический урон, замедляя цель.",
+  "spell.berserker_rpg.rumbling_swing.name": "Грохочущие Взмах",
+  "spell.berserker_rpg.rumbling_swing.description": "Молниеносный прыжок, нанося {damage}_0 физический урон и {damage}_1 урона молний",
+  "spell.berserker_rpg.thunder_call.name": "Зов Торанна",
+  "spell.berserker_rpg.thunder_call.description": "Вызывает небесную молнию, которая наносит {damage} урона от молний и поджигает цели.",
+  "spell.berserker_rpg.soulaxe_drain.name": "Жертвоприношение",
+  "spell.berserker_rpg.soulaxe_drain.description": "Нанося урон самому себе, высасывает души из целей, нанося {damage} урона души в секунду.",
+  "spell.berserker_rpg.outrage.name": "Бесчинство",
+  "spell.berserker_rpg.outrage.description": "Наносит дикий удар, накладывает эффект ярости, нанося {damage} физического урона.",
+
+  "advancements.more_rpg_content.raid_axe.title": "К кораблям!",
+  "advancements.more_rpg_content.raid_axe.description": "Получить Железную Секиру",
+  "advancements.more_rpg_content.berserker_spells.title": "Путь Берсерка",
+  "advancements.more_rpg_content.berserker_spells.description": "Получите все заклинания Берсерка",
+  "advancements.rpg_classes.northling.title": "Дикая Ярость на коже",
+  "advancements.rpg_classes.northling.description": "Получите все части набора Северянина."
+}

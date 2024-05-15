@@ -1,0 +1,55 @@
+{
+  "itemGroup.berserker_rpg.general": "Berserker",
+
+  "item.berserker_rpg.berserker_spell_book": "Nordischer Runen Wälzer",
+
+  "item.berserker_rpg.flint_berserker_axe": "Feuersteinaxt des Plünderers",
+  "item.berserker_rpg.stone_berserker_axe": "Steinaxt des Plünderers",
+  "item.berserker_rpg.iron_berserker_axe": "Eisenaxt des Plünderers",
+  "item.berserker_rpg.golden_berserker_axe": "Goldaxt des Plünderers",
+  "item.berserker_rpg.diamond_berserker_axe": "Diamantaxt des Plünderers",
+  "item.berserker_rpg.netherite_berserker_axe": "Netheritaxt des Plünderers",
+  "item.berserker_rpg.frozen_berserker_axe": "Nordische Axt",
+  "item.berserker_rpg.thunder_berserker_axe": "Axt von Torann",
+  "item.berserker_rpg.soul_berserker_axe": "Verfluchte Axt",
+
+  "item.berserker_rpg.wildling_head": "Wildling Helm",
+  "item.berserker_rpg.wildling_chest": "Wildling Harnisch",
+  "item.berserker_rpg.wildling_legs": "Wildling Hose",
+  "item.berserker_rpg.wildling_feet": "Wildling Stiefel",
+  "item.berserker_rpg.northling_head": "Nordling Helm",
+  "item.berserker_rpg.northling_chest": "Nordling Harnisch",
+  "item.berserker_rpg.northling_legs": "Nordling Hose",
+  "item.berserker_rpg.northling_feet": "Nordling Stiefel",
+
+  "effect.berserker_rpg.rage": "Wut",
+  "effect.berserker_rpg.rage.description": "Erteile mehr Schadne umso weniger Leben du hast. Effekt kann bei Angriff erhöht werden.",
+  "effect.berserker_rpg.soul_devourer": "Soul Devourer",
+  "effect.berserker_rpg.soul_devourer.description": "Sammel Seelen wenn du Gegner besiegst.",
+
+  "death.attack.berserker_cost": "%1$s blacked out due to exhaustion.",
+
+  "spell.berserker_rpg.wild_rage.name": "Wilde Wut",
+  "spell.berserker_rpg.wild_rage.description": "Verängstigt Ziele für {effect_duration} Sekunden und verleiht dem Zaubernden den Wuteffekt.",
+  "spell.berserker_rpg.bloody_strike.name": "Blutiger Schlag",
+  "spell.berserker_rpg.bloody_strike.description": "Verursacht {damage} physischen Schaden und heilt den Zaubernden um die Hälfte des verursachten Schadens.",
+  "spell.berserker_rpg.nordic_storm.name": "Nordischer Sturm",
+  "spell.berserker_rpg.nordic_storm.description": "Wirbelnder Angriff, der Zielen pro Sekunde {damage}_0 physischen Schaden und {damage}_1 Frostschaden zufügt.",
+  "spell.berserker_rpg.undertow.name": "Sog",
+  "spell.berserker_rpg.undertow.description": "Wirft die Waffe, verursacht {damage} physischen Schaden und verlangsamt das Ziel.",
+  "spell.berserker_rpg.rumbling_swing.name": "Donnernder Schwung",
+  "spell.berserker_rpg.rumbling_swing.description": "Springt blitzschnell und verursacht {damage}_0 physischen Schaden und {damage}_1 Blitzschaden",
+  "spell.berserker_rpg.thunder_call.name": "Torann´s Ruf",
+  "spell.berserker_rpg.thunder_call.description": "Beschwört einen Blitz vom Himmel, der {damage} Blitzschaden verursacht und Ziele in Brand setzt.",
+  "spell.berserker_rpg.soulaxe_drain.name": "Opferentzug",
+  "spell.berserker_rpg.soulaxe_drain.description": "Fügt dir selbst Schaden zu, entzieht Zielen die Seelen und verursacht {damage} Seelenschaden pro Sekunde.",
+  "spell.berserker_rpg.outrage.name": "Wutanfall",
+  "spell.berserker_rpg.outrage.description": "Schlägt wild zu, skaliert mit Wuteffekt und verursacht {damage} physischen Schaden.",
+
+  "advancements.more_rpg_content.raid_axe.title": "Zu den Schiffen!",
+  "advancements.more_rpg_content.raid_axe.description": "Erhalte eine Eisenaxt des Plünderers!",
+  "advancements.more_rpg_content.berserker_spells.title": "Weg des Berserkers",
+  "advancements.more_rpg_content.berserker_spells.description": "Erhalte alle Berserker Zaubersprüche",
+  "advancements.rpg_classes.northling.title": "Wilde Wut auf der Haut",
+  "advancements.rpg_classes.northling.description": "Erhalte alle  Nordling Rüstungsteile."
+}

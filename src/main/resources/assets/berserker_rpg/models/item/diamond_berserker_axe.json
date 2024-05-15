@@ -1,0 +1,6 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "berserker_rpg:item/diamond_berserker_axe"
+  }
+}
