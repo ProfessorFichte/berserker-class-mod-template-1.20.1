@@ -33,7 +33,7 @@
       "action": {
         "type": "DAMAGE",
         "damage": {
-          "spell_power_coefficient": 0.65,
+          "spell_power_coefficient": 0.80,
           "knockback": 1.0
         }
       },
@@ -56,13 +56,13 @@
         "school": "LIGHTNING",
         "type": "DAMAGE",
         "damage": {
-          "spell_power_coefficient": 0.6
+          "spell_power_coefficient": 0.5
         }
       }
     }
   ],
   "cost": {
-    "exhaust": 15.0,
+    "exhaust": 1.0,
     "durability": 1,
     "cooldown_duration": 28,
     "cooldown_haste_affected": "false"

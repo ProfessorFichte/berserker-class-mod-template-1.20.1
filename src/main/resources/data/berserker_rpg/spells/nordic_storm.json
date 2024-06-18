@@ -1,12 +1,13 @@
 {
   "school": "PHYSICAL_MELEE",
   "group": "primary",
-  "range": 2.5,
+  "range": 3.0,
   "learn": {
     "tier": 4
   },
   "cast": {
     "duration": 0.5,
+    "movement_speed": 1.2,
     "animation": "more_rpg_classes:nordic_storm",
     "sound": {
       "id": "spell_engine:generic_frost_impact",
@@ -54,7 +55,7 @@
       "action": {
         "type": "DAMAGE",
         "damage": {
-          "spell_power_coefficient": 0.6
+          "spell_power_coefficient": 0.8
         }
       },
       "particles": [
@@ -77,7 +78,7 @@
         "school": "FROST",
         "type": "DAMAGE",
         "damage": {
-          "spell_power_coefficient": 0.6
+          "spell_power_coefficient": 0.5
         }
       }
     },
@@ -95,7 +96,7 @@
     }
   ],
   "cost": {
-    "exhaust" : 15.0,
+    "exhaust" : 1.0,
     "cooldown_duration": 10,
     "durability": 5,
     "cooldown_proportional": true,

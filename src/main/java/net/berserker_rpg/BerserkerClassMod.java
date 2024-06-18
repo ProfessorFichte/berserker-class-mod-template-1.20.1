@@ -43,7 +43,7 @@ public class BerserkerClassMod implements ModInitializer {
 			.constrain(LootConfig::constrainValues)
 			.build();
 	public static ConfigManager<EffectsConfig> effectsConfig = new ConfigManager<EffectsConfig>
-			("effects", new EffectsConfig())
+			("effects_v1", new EffectsConfig())
 			.builder()
 			.setDirectory(MOD_ID)
 			.sanitize(true)
@@ -68,6 +68,7 @@ public class BerserkerClassMod implements ModInitializer {
 	public void onInitialize() {
 		lootConfig.refresh();
 		itemConfig.refresh();
+		effectsConfig.refresh();
 		BerserkerItems.registerModItems();
 		Effects.register();
 		Particles.register();

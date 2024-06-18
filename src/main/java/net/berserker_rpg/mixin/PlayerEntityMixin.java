@@ -15,6 +15,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 
+import static net.berserker_rpg.BerserkerClassMod.effectsConfig;
 import static net.more_rpg_classes.util.CustomMethods.increaseAmpByChance;
 import static net.more_rpg_classes.util.CustomMethods.increaseEffectLevel;
 
@@ -28,8 +29,10 @@ public class PlayerEntityMixin {
             if (player.hasStatusEffect(Effects.SOUL_DEVOURER)) {
                 if(!player.hasStatusEffect(MRPGCEffects.COLLECTED_SOUL)){
                     player.addStatusEffect(new StatusEffectInstance(MRPGCEffects.COLLECTED_SOUL,400,0,false,false,true));
+                    player.heal(other.getMaxHealth()*effectsConfig.value.soul_devourer_heal_on_kill_target_max_health_amount);
                 }else{
                     increaseEffectLevel(player,MRPGCEffects.COLLECTED_SOUL,400,1,20);
+                    player.heal(other.getMaxHealth()*effectsConfig.value.soul_devourer_heal_on_kill_target_max_health_amount);
                 }
             }
         }
@@ -40,7 +43,7 @@ public class PlayerEntityMixin {
         PlayerEntity player = (PlayerEntity)(Object)this;
         if (player instanceof ServerPlayerEntity) {
             if (player.hasStatusEffect(Effects.RAGE)) {
-                int rage_berserker_chance = 10; int rage_duration = 500; int rage_amplifier_max = 4;
+                int rage_berserker_chance = 10; int rage_duration = 500; int rage_amplifier_max = effectsConfig.value.rage_max_amplifier_stack - 1;
                 increaseAmpByChance(player,Effects.RAGE,rage_duration,1,rage_amplifier_max,rage_berserker_chance);
             }
         }

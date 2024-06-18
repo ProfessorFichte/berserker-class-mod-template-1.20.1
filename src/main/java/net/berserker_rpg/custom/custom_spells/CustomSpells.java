@@ -9,6 +9,7 @@ import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.world.RaycastContext;
+import net.more_rpg_classes.effect.MRPGCEffects;
 import net.more_rpg_classes.entity.attribute.MRPGCEntityAttributes;
 import net.spell_engine.api.spell.CustomSpellHandler;
 import net.spell_engine.api.spell.Spell;
@@ -46,6 +47,7 @@ public class CustomSpells {
                         SpellHelper.performImpacts(entity.getWorld(), data1.caster(), entity, entity, new SpellInfo(getSpell(new Identifier(MOD_ID, "bloody_strike")),new Identifier(MOD_ID)), data1.impactContext());
                         float healamount = (float) amount * bloody_strike_heal;
                         data1.caster().heal(healamount);
+                        ((LivingEntity) entity).addStatusEffect(new StatusEffectInstance(MRPGCEffects.BLEEDING,6));
                     }
                     return true;
                 }
@@ -72,20 +74,17 @@ public class CustomSpells {
         CustomSpellHandler.register(new Identifier(MOD_ID, "outrage"), (data) -> {
             CustomSpellHandler.Data data1 = (CustomSpellHandler.Data) data;
             float modifier = getSpell(new Identifier(MOD_ID, "outrage")).impact[0].action.damage.spell_power_coefficient;
-            double rage_attr = (data1.caster().getAttributeValue(MRPGCEntityAttributes.RAGE_MODIFIER)-100);
+            double rage_attr = (data1.caster().getAttributeValue(MRPGCEntityAttributes.RAGE_MODIFIER)-100) / 10;
 
             Predicate<Entity> selectionPredicate = (target2) -> {
                 return (TargetHelper.actionAllowed(TargetHelper.TargetingMode.DIRECT, TargetHelper.Intent.HARMFUL, data1.caster(), target2)
                 );
             };
-            var actualSchool = data1.caster().getAttributeValue(EntityAttributes.GENERIC_ATTACK_DAMAGE);
             if (!data1.caster().getWorld().isClient) {
                 for (Entity entity : data1.targets()) {
 
                     if (data1.caster().hasStatusEffect(Effects.RAGE)) {
-                        int rageamp = data1.caster().getStatusEffect(Effects.RAGE).getAmplifier();
                         SoundHelper.playSound(data1.caster().getWorld(), entity, getSpell(new Identifier(MOD_ID, "outrage")).impact[0].sound);
-                        double amount = (((float)rageamp * modifier));
                         double amount2 = (((float)rage_attr * modifier));
                         entity.damage(entity.getDamageSources().playerAttack(data1.caster()),(float) amount2);
                         SpellHelper.performImpacts(entity.getWorld(), data1.caster(), entity, entity, new SpellInfo(getSpell(new Identifier(MOD_ID, "outrage")),new Identifier(MOD_ID)), data1.impactContext());

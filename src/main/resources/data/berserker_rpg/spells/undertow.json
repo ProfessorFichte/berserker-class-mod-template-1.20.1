@@ -1,37 +1,47 @@
 {
-  "range": 7.5,
+  "range": 20.0,
   "group": "primary",
   "school": "PHYSICAL_MELEE",
   "learn": {
     "tier": 1
   },
   "cast": {
-    "duration": 0
+    "duration": 0,
+    "animation": "spell_engine:one_handed_projectile_charge"
   },
   "release": {
-    "custom_impact": false,
     "target": {
-      "type": "CURSOR"
-    },
-    "animation": "more_rpg_classes:axe_throw",
-    "particles": [
-      {
-        "particle_id": "crit",
-        "shape": "PIPE",
-        "origin": "CENTER",
-        "count": 15.0,
-        "min_speed": 0.2,
-        "max_speed": 0.6
+      "type": "PROJECTILE",
+      "projectile": {
+        "launch_properties": {
+          "velocity": 0.75
+        },
+        "projectile": {
+          "homing_angle": 2.0,
+          "perks": {
+            "bounce": 1
+          },
+          "client_data": {
+            "travel_particles": [ ],
+            "model": {
+              "use_held_item": true,
+              "light_emission": "NONE",
+              "rotate_degrees_per_tick": -45.0,
+              "scale": 1,
+              "orientation": "ALONG_MOTION"
+            }
+          }
+        }
       }
-    ],
-    "channel_ticks": 20.0
+    },
+    "animation": "spell_engine:one_handed_throw_release"
   },
   "impact": [
     {
       "action": {
         "type": "DAMAGE",
         "damage": {
-          "spell_power_coefficient": 0.5,
+          "spell_power_coefficient": 0.8,
           "knockback": 1.5
         }
       },
@@ -56,7 +66,7 @@
           "effect_id": "slowness",
           "duration": 8.0,
           "apply_mode": "SET",
-          "amplifier": 0,
+          "amplifier": 1,
           "show_particles": false
         }
       }
@@ -64,9 +74,9 @@
   ],
   "channel_ticks": 40.0,
   "cost": {
-    "exhaust": 8.0,
+    "exhaust": 0.2,
     "durability": 1,
-    "cooldown_duration": 16,
+    "cooldown_duration": 10,
     "cooldown_haste_affected": "false"
   }
 }
