@@ -1,5 +1,5 @@
 {
-  "parent": "item/handheld",
+  "parent": "berserker_rpg:item/raid_axe_model",
   "textures": {
     "layer0": "berserker_rpg:item/frozen_berserker_axe"
   }

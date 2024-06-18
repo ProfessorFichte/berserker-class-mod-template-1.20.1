@@ -7,6 +7,9 @@
 - walk in normal speed while casting Sacrifice Drain & Outrage
 - nerfed hunger costs of the spells
 - buffed the damage for all spells
+- changed models and textures of raid axes
+- buffed better combat range of raid axes
+- made raid axes attack slower but dealing more damage
 
 1.0.5
 - Moved Berserker Spell Cost Damage Source to this mod from More RPG Classes Mod
