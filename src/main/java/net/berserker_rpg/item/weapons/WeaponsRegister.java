@@ -51,7 +51,7 @@ public class WeaponsRegister {
         };
     }
 
-    public static float berserker_axe_attackSpeed = -3.0f;
+    public static float berserker_axe_attackSpeed = -3.1f;
 
     //BERSERKER-AXE
     private static Weapon.Entry berserker_axes(String name, Weapon.CustomMaterial material, float damage) {
@@ -99,27 +99,27 @@ public class WeaponsRegister {
             .attribute(ItemConfig.Attribute.multiply(SpellPowerMechanics.CRITICAL_DAMAGE.id, 0.02F))
             ;
     public static final Weapon.Entry diamond_berserker_axe = berserker_axes("diamond_berserker_axe",
-            Weapon.CustomMaterial.matching(ToolMaterials.DIAMOND, () -> Ingredient.ofItems(Items.DIAMOND)), 9.0F)
+            Weapon.CustomMaterial.matching(ToolMaterials.DIAMOND, () -> Ingredient.ofItems(Items.DIAMOND)), 10.5F)
             .attribute(ItemConfig.Attribute.multiply(SpellPowerMechanics.CRITICAL_DAMAGE.id, 0.05F))
             .attribute(ItemConfig.Attribute.multiply(SpellPowerMechanics.CRITICAL_CHANCE.id, 0.01F))
             ;
     public static final Weapon.Entry netherite_berserker_axe = berserker_axes("netherite_berserker_axe",
-            Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, () -> Ingredient.ofItems(Items.NETHERITE_INGOT)), 10.0F)
+            Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, () -> Ingredient.ofItems(Items.NETHERITE_INGOT)), 12.0F)
             .attribute(ItemConfig.Attribute.multiply(SpellPowerMechanics.CRITICAL_DAMAGE.id, 0.075F))
             .attribute(ItemConfig.Attribute.multiply(SpellPowerMechanics.CRITICAL_CHANCE.id, 0.02F))
             ;
     public static final Weapon.Entry frozen_berserker_axe = special_berserker_axe_1("frozen_berserker_axe",
-            Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, () -> Ingredient.ofItems(Items.DIAMOND)),9.5F)
+            Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, () -> Ingredient.ofItems(Items.DIAMOND)),11.5F)
             .attribute(ItemConfig.Attribute.multiply(SpellPowerMechanics.CRITICAL_CHANCE.id, 0.04F))
             .attribute(ItemConfig.Attribute.bonus(SpellSchools.FROST.id, 3))
             ;
     public static final Weapon.Entry thunder_berserker_axe = special_berserker_axe_2("thunder_berserker_axe",
-            Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, () -> Ingredient.ofItems(Items.DIAMOND)),9.5F)
+            Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, () -> Ingredient.ofItems(Items.DIAMOND)),11.5F)
             .attribute(ItemConfig.Attribute.multiply(SpellPowerMechanics.CRITICAL_DAMAGE.id, 0.1F))
             .attribute(ItemConfig.Attribute.bonus(SpellSchools.LIGHTNING.id, 3))
             ;
     public static final Weapon.Entry soul_berserker_axe = special_berserker_axe_3("soul_berserker_axe",
-            Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, () -> Ingredient.ofItems(Items.NETHERITE_INGOT)),10.5F)
+            Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, () -> Ingredient.ofItems(Items.NETHERITE_INGOT)),12.5F)
             .attribute(ItemConfig.Attribute.bonus(SpellSchools.SOUL.id, 4))
             ;
 
