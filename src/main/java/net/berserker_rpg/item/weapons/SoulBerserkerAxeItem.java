@@ -10,6 +10,7 @@ import net.minecraft.item.ToolMaterial;
 import net.minecraft.registry.tag.BlockTags;
 import net.more_rpg_classes.entity.attribute.MRPGCEntityAttributes;
 import net.spell_engine.api.item.ConfigurableAttributes;
+import net.spell_engine.api.item.weapon.MeleeWeaponItem;
 import net.spell_engine.api.item.weapon.SpellSwordItem;
 import com.google.common.collect.ImmutableMultimap;
 import net.minecraft.entity.EquipmentSlot;
@@ -17,7 +18,7 @@ import net.minecraft.entity.EquipmentSlot;
 import java.util.List;
 import java.util.UUID;
 
-public class SoulBerserkerAxeItem extends SpellSwordItem implements ConfigurableAttributes {
+public class SoulBerserkerAxeItem extends MeleeWeaponItem implements ConfigurableAttributes {
     public SoulBerserkerAxeItem(ToolMaterial material, Settings settings) {
         super(material, settings);
     }

@@ -11,11 +11,6 @@ import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.util.Identifier;
 import net.spell_engine.api.item.ItemConfig;
 import net.spell_engine.api.item.weapon.Weapon;
-import net.spell_engine.api.item.ItemConfig;
-import net.spell_engine.api.item.weapon.SpellSwordItem;
-import net.spell_engine.api.item.weapon.SpellWeaponItem;
-import net.spell_engine.api.item.weapon.StaffItem;
-import net.spell_engine.api.item.weapon.Weapon;
 import net.spell_power.api.SpellPowerMechanics;
 import net.spell_power.api.SpellSchools;
 
@@ -84,29 +79,21 @@ public class WeaponsRegister {
 
     public static final Weapon.Entry flint_berserker_axe = berserker_axes("flint_berserker_axe",
             Weapon.CustomMaterial.matching(ToolMaterials.WOOD, () -> Ingredient.ofItems(Items.FLINT)), 7.0F)
-            .attribute(ItemConfig.Attribute.multiply(SpellPowerMechanics.CRITICAL_DAMAGE.id, 0.01F))
             ;
     public static final Weapon.Entry stone_berserker_axe = berserker_axes("stone_berserker_axe",
             Weapon.CustomMaterial.matching(ToolMaterials.STONE, () -> Ingredient.fromTag(ItemTags.STONE_TOOL_MATERIALS)), 9.0F)
-            .attribute(ItemConfig.Attribute.multiply(SpellPowerMechanics.CRITICAL_DAMAGE.id, 0.02F))
             ;
     public static final Weapon.Entry iron_berserker_axe = berserker_axes("iron_berserker_axe",
             Weapon.CustomMaterial.matching(ToolMaterials.IRON, () -> Ingredient.ofItems(Items.IRON_INGOT)), 9.0F)
-            .attribute(ItemConfig.Attribute.multiply(SpellPowerMechanics.CRITICAL_DAMAGE.id, 0.03F))
             ;
     public static final Weapon.Entry golden_berserker_axe = berserker_axes("golden_berserker_axe",
             Weapon.CustomMaterial.matching(ToolMaterials.GOLD, () -> Ingredient.ofItems(Items.GOLD_INGOT)), 7.0F)
-            .attribute(ItemConfig.Attribute.multiply(SpellPowerMechanics.CRITICAL_DAMAGE.id, 0.02F))
             ;
     public static final Weapon.Entry diamond_berserker_axe = berserker_axes("diamond_berserker_axe",
             Weapon.CustomMaterial.matching(ToolMaterials.DIAMOND, () -> Ingredient.ofItems(Items.DIAMOND)), 10.5F)
-            .attribute(ItemConfig.Attribute.multiply(SpellPowerMechanics.CRITICAL_DAMAGE.id, 0.05F))
-            .attribute(ItemConfig.Attribute.multiply(SpellPowerMechanics.CRITICAL_CHANCE.id, 0.01F))
             ;
     public static final Weapon.Entry netherite_berserker_axe = berserker_axes("netherite_berserker_axe",
             Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, () -> Ingredient.ofItems(Items.NETHERITE_INGOT)), 12.0F)
-            .attribute(ItemConfig.Attribute.multiply(SpellPowerMechanics.CRITICAL_DAMAGE.id, 0.075F))
-            .attribute(ItemConfig.Attribute.multiply(SpellPowerMechanics.CRITICAL_CHANCE.id, 0.02F))
             ;
     public static final Weapon.Entry frozen_berserker_axe = special_berserker_axe_1("frozen_berserker_axe",
             Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, () -> Ingredient.ofItems(Items.DIAMOND)),11.5F)

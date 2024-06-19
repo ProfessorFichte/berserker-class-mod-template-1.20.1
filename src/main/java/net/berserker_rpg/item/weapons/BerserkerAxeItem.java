@@ -5,9 +5,10 @@ import net.minecraft.block.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.registry.tag.BlockTags;
+import net.spell_engine.api.item.weapon.MeleeWeaponItem;
 import net.spell_engine.api.item.weapon.SpellSwordItem;
 
-public class BerserkerAxeItem extends SpellSwordItem {
+public class BerserkerAxeItem extends MeleeWeaponItem {
     public BerserkerAxeItem(ToolMaterial material, Settings settings) {
         super(material, settings);
     }

@@ -2,6 +2,7 @@ package net.berserker_rpg.item.armor;
 
 import net.berserker_rpg.BerserkerClassMod;
 import net.berserker_rpg.item.BerserkerGroup;
+import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
@@ -10,10 +11,8 @@ import net.minecraft.sound.SoundEvents;
 import net.more_rpg_classes.item.MRPGCItems;
 import net.spell_engine.api.item.ItemConfig;
 import net.spell_engine.api.item.armor.Armor;
-import net.spell_power.api.SpellPowerMechanics;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 import java.util.function.Supplier;
 
@@ -27,8 +26,15 @@ public class Armors {
     );
 
 
-    private static final float wildlingSpellChance = 0.01F;
-    private static final float northlingSpellChance = 0.02F;
+    private static ItemConfig.Attribute atkSpeedMultiply(float value) {
+        return new ItemConfig.Attribute(
+                "generic.attack_speed",
+                value,
+                EntityAttributeModifier.Operation.MULTIPLY_BASE);
+    }
+    public static final float berserker_atkspeed_T1 = 0.02F;
+    public static final float berserker_atkspeed_T2 = 0.04F;
+
 
     public static final ArrayList<Armor.Entry> entries = new ArrayList<>();
     private static Armor.Entry create(Armor.CustomMaterial material, ItemConfig.ArmorSet defaults) {
@@ -47,21 +53,13 @@ public class Armors {
                     ),
                     ItemConfig.ArmorSet.with(
                             new ItemConfig.ArmorSet.Piece(1)
-                                    .addAll(List.of(
-                                            ItemConfig.Attribute.multiply(SpellPowerMechanics.CRITICAL_CHANCE.id, wildlingSpellChance)
-                                    )),
+                                    .add(atkSpeedMultiply(berserker_atkspeed_T1)),
+                            new ItemConfig.ArmorSet.Piece(3)
+                                    .add(atkSpeedMultiply(berserker_atkspeed_T1)),
                             new ItemConfig.ArmorSet.Piece(2)
-                                    .addAll(List.of(
-                                            ItemConfig.Attribute.multiply(SpellPowerMechanics.CRITICAL_CHANCE.id, wildlingSpellChance)
-                                    )),
-                            new ItemConfig.ArmorSet.Piece(2)
-                                    .addAll(List.of(
-                                            ItemConfig.Attribute.multiply(SpellPowerMechanics.CRITICAL_CHANCE.id, wildlingSpellChance)
-                                    )),
+                                    .add(atkSpeedMultiply(berserker_atkspeed_T1)),
                             new ItemConfig.ArmorSet.Piece(1)
-                                    .addAll(List.of(
-                                            ItemConfig.Attribute.multiply(SpellPowerMechanics.CRITICAL_CHANCE.id, wildlingSpellChance)
-                                    ))
+                                    .add(atkSpeedMultiply(berserker_atkspeed_T1))
                     ))   .bundle(material -> new Armor.Set<>(BerserkerClassMod.MOD_ID,
                             new WildlingArmor(material, ArmorItem.Type.HELMET, new Item.Settings()),
                             new WildlingArmor(material, ArmorItem.Type.CHESTPLATE, new Item.Settings()),
@@ -82,22 +80,13 @@ public class Armors {
                     ),
                     ItemConfig.ArmorSet.with(
                             new ItemConfig.ArmorSet.Piece(2)
-                                    .addAll(List.of(
-                                            ItemConfig.Attribute.multiply(SpellPowerMechanics.CRITICAL_CHANCE.id, northlingSpellChance)
-                                    )),
+                                    .add(atkSpeedMultiply(berserker_atkspeed_T2)),
+                            new ItemConfig.ArmorSet.Piece(5)
+                                    .add(atkSpeedMultiply(berserker_atkspeed_T2)),
                             new ItemConfig.ArmorSet.Piece(3)
-                                    .addAll(List.of(
-                                            ItemConfig.Attribute.multiply(SpellPowerMechanics.CRITICAL_CHANCE.id, northlingSpellChance)
-                                    )),
+                                    .add(atkSpeedMultiply(berserker_atkspeed_T2)),
                             new ItemConfig.ArmorSet.Piece(2)
-                                    .addAll(List.of(
-                                            ItemConfig.Attribute.multiply(SpellPowerMechanics.CRITICAL_CHANCE.id, northlingSpellChance)
-
-                                    )),
-                            new ItemConfig.ArmorSet.Piece(1)
-                                    .addAll(List.of(
-                                            ItemConfig.Attribute.multiply(SpellPowerMechanics.CRITICAL_CHANCE.id, northlingSpellChance)
-                                    ))
+                                    .add(atkSpeedMultiply(berserker_atkspeed_T2))
                     ))   .bundle(material -> new Armor.Set<>(BerserkerClassMod.MOD_ID,
                             new NorthlingArmor(material, ArmorItem.Type.HELMET, new Item.Settings()),
                             new NorthlingArmor(material, ArmorItem.Type.CHESTPLATE, new Item.Settings()),
