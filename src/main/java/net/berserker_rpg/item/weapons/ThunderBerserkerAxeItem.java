@@ -9,9 +9,10 @@ import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.registry.tag.BlockTags;
+import net.spell_engine.api.item.weapon.MeleeWeaponItem;
 import net.spell_engine.api.item.weapon.SpellSwordItem;
 
-public class ThunderBerserkerAxeItem extends SpellSwordItem {
+public class ThunderBerserkerAxeItem extends MeleeWeaponItem {
     public ThunderBerserkerAxeItem(ToolMaterial material, Settings settings) {
         super(material, settings);
     }

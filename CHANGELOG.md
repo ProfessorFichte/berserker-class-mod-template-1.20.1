@@ -1,15 +1,22 @@
 1.0.6
+FIXES
 - Wild Rage effect gave addition instead of multiply for the Rage Attribute
 - fixed something with the Outrage damage calculation and buffed the range
+BALANCING
 - bloody strike now adds the bleeding effect on non-undead targets
+- nerfed hunger costs of the spells
+- buffed the damage for all spells
+- buffed better combat range of raid axes
+- made raid axes attack slower but dealing more damage
+- removed the Spell Crit Chance & Spell Crit Damage from the Raid Axes and Berserker Armor
+- Buffed the armor values of Berserker Armor and gave them attack speed
+VISUALS & ENHANCEMENT
 - Updated for Spell Engine version 0.15
 - changed Undertow to use new spell engine feature
 - walk in normal speed while casting Sacrifice Drain & Outrage
-- nerfed hunger costs of the spells
-- buffed the damage for all spells
+- EnviromentZ & Frostiful Compat for my Berserker Armor
+- Crafting with fur Items now functions with tags, to add compat for other fur items
 - changed models and textures of raid axes
-- buffed better combat range of raid axes
-- made raid axes attack slower but dealing more damage
 
 1.0.5
 - Moved Berserker Spell Cost Damage Source to this mod from More RPG Classes Mod

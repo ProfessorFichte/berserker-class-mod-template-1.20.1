@@ -23,7 +23,7 @@ public class Effects {
         RAGE.addAttributeModifier(MRPGCEntityAttributes.RAGE_MODIFIER, "4ff7e39a-22d1-4b65-b87a-815883237180",
                         effectsConfig.value.rage_rage_attribute_increase_per_stack, EntityAttributeModifier.Operation.MULTIPLY_BASE)
                 .addAttributeModifier(EntityAttributes.GENERIC_ATTACK_SPEED, "3098b421-2316-4b40-9fcf-71c84fd85fc3",
-                        effectsConfig.value.rage_attack_speed_increase_per_stack, EntityAttributeModifier.Operation.MULTIPLY_TOTAL);
+                        effectsConfig.value.rage_attack_speed_increase_per_stack, EntityAttributeModifier.Operation.MULTIPLY_BASE);
 
         Synchronized.configure(RAGE,true);
         Synchronized.configure(SOUL_DEVOURER,true);

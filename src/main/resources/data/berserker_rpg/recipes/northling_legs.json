@@ -10,7 +10,7 @@
       "item": "minecraft:leather"
     },
     "R": {
-      "item": "more_rpg_classes:polar_bear_fur"
+      "tag": "more_rpg_classes:polar_bear_fur"
     }
   },
   "result": {
