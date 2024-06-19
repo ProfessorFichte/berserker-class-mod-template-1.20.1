@@ -1,3 +1,6 @@
+1.0.6.1
+- italian translation thanks to Zano1999
+
 1.0.6
 FIXES
 - Wild Rage effect gave addition instead of multiply for the Rage Attribute
@@ -10,13 +13,14 @@ BALANCING
 - made raid axes attack slower but dealing more damage
 - removed the Spell Crit Chance & Spell Crit Damage from the Raid Axes and Berserker Armor
 - Buffed the armor values of Berserker Armor and gave them attack speed
+- While Soul Devourer is active, you heal yourself on killing enemies ( percentage of their may health, configurable)
 VISUALS & ENHANCEMENT
 - Updated for Spell Engine version 0.15
 - changed Undertow to use new spell engine feature
 - walk in normal speed while casting Sacrifice Drain & Outrage
 - EnviromentZ & Frostiful Compat for my Berserker Armor
 - Crafting with fur Items now functions with tags, to add compat for other fur items
-- changed models and textures of raid axes
+- changed models and textures of raid axes (longer axe then the regular)
 
 1.0.5
 - Moved Berserker Spell Cost Damage Source to this mod from More RPG Classes Mod
