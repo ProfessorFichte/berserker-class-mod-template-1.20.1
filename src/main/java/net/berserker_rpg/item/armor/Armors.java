@@ -1,11 +1,14 @@
 package net.berserker_rpg.item.armor;
 
-import net.berserker_rpg.BerserkerClassMod;
 import net.berserker_rpg.item.BerserkerGroup;
 import net.minecraft.item.ArmorItem;
-import net.minecraft.item.Item;
+import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.Ingredient;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
+import net.minecraft.registry.entry.RegistryEntry;
+import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 import net.more_rpg_classes.item.MRPGCItems;
@@ -18,13 +21,14 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.function.Supplier;
 
-public class Armors {
+import static net.berserker_rpg.BerserkerClassMod.MOD_ID;
 
+public class Armors {
     private static final Supplier<Ingredient> WILDLING_INGREDIENTS = () -> Ingredient.ofItems(
             Items.LEATHER, Items.CHAIN, MRPGCItems.WOLF_FUR
     );
     private static final Supplier<Ingredient> NORTHLING_INGREDIENTS = () -> Ingredient.ofItems(
-            Items.IRON_INGOT, Items.CHAIN, MRPGCItems.WOLF_FUR
+            Items.IRON_INGOT, Items.CHAIN, MRPGCItems.POLAR_BEAR_FUR
     );
 
     public static final float berserker_atkspeed_T1 = 0.02F;
@@ -34,21 +38,52 @@ public class Armors {
     public static final float berserker_atkdamage_T2 = 0.03F;
 
 
-    public static final ArrayList<Armor.Entry> entries = new ArrayList<>();
-    private static Armor.Entry create(Armor.CustomMaterial material, ItemConfig.ArmorSet defaults) {
-        return new Armor.Entry(material, null, defaults);
+    public static RegistryEntry<ArmorMaterial> material(String name,
+                                                        int protectionHead, int protectionChest, int protectionLegs, int protectionFeet,
+                                                        int enchantability, RegistryEntry<SoundEvent> equipSound, Supplier<Ingredient> repairIngredient) {
+        var material = new ArmorMaterial(
+                Map.of(
+                        ArmorItem.Type.HELMET, protectionHead,
+                        ArmorItem.Type.CHESTPLATE, protectionChest,
+                        ArmorItem.Type.LEGGINGS, protectionLegs,
+                        ArmorItem.Type.BOOTS, protectionFeet),
+                enchantability, equipSound, repairIngredient,
+                List.of(new ArmorMaterial.Layer(Identifier.of(MOD_ID, name))),
+                0,0
+        );
+        return Registry.registerReference(Registries.ARMOR_MATERIAL, Identifier.of(MOD_ID, name), material);
     }
 
+    public static RegistryEntry<ArmorMaterial> material_wildling = material(
+            "wildling",
+            1, 3, 2, 1,
+            9,
+            SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, WILDLING_INGREDIENTS);
+
+    public static RegistryEntry<ArmorMaterial> material_northling = material(
+            "northling",
+            2, 5, 3, 2,
+            11,
+            SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, NORTHLING_INGREDIENTS);
+
+    public static final ArrayList<Armor.Entry> entries = new ArrayList<>();
+    private static Armor.Entry create(RegistryEntry<ArmorMaterial> material, Identifier id, int durability, Armor.Set.ItemFactory factory, ItemConfig.ArmorSet defaults) {
+        var entry = Armor.Entry.create(
+                material,
+                id,
+                durability,
+                factory,
+                defaults);
+        entries.add(entry);
+        return entry;
+    }
 
     public static final Armor.Set wildlingArmorSet =
             create(
-                    new Armor.CustomMaterial(
-                            "wildling",
-                            10,
-                            9,
-                            SoundEvents.ITEM_ARMOR_EQUIP_LEATHER,
-                            WILDLING_INGREDIENTS
-                    ),
+                    material_wildling,
+                    Identifier.of(MOD_ID, "wildling"),
+                    15,
+                    WildlingArmor::new,
                     ItemConfig.ArmorSet.with(
                             new ItemConfig.ArmorSet.Piece(1)
                                     .addAll(List.of(
@@ -70,24 +105,15 @@ public class Armors {
                                             ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_speed")),berserker_atkspeed_T1),
                                             ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("more_rpg_classes:rage_modifier")),berserker_rage_T1 )
                                     ))
-                    ))   .bundle(material -> new Armor.Set<>(BerserkerClassMod.MOD_ID,
-                            new WildlingArmor(material, ArmorItem.Type.HELMET, new Item.Settings()),
-                            new WildlingArmor(material, ArmorItem.Type.CHESTPLATE, new Item.Settings()),
-                            new WildlingArmor(material, ArmorItem.Type.LEGGINGS, new Item.Settings()),
-                            new WildlingArmor(material, ArmorItem.Type.BOOTS, new Item.Settings())
                     ))
-                    .put(entries).armorSet()
-                    .allowSpellPowerEnchanting(false);
+                    .armorSet();
 
     public static final Armor.Set northlingArmorSet =
             create(
-                    new Armor.CustomMaterial(
-                            "northling",
-                            20,
-                            10,
-                            SoundEvents.ITEM_ARMOR_EQUIP_LEATHER,
-                            NORTHLING_INGREDIENTS
-                    ),
+                    material_northling,
+                    Identifier.of(MOD_ID, "northling"),
+                    25,
+                    WildlingArmor::new,
                     ItemConfig.ArmorSet.with(
                             new ItemConfig.ArmorSet.Piece(2)
                                     .addAll(List.of(
@@ -113,14 +139,8 @@ public class Armors {
                                             ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("more_rpg_classes:rage_modifier")),berserker_rage_T2 ),
                                             ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_damage")),berserker_atkdamage_T2)
                                     ))
-                    ))   .bundle(material -> new Armor.Set<>(BerserkerClassMod.MOD_ID,
-                            new NorthlingArmor(material, ArmorItem.Type.HELMET, new Item.Settings()),
-                            new NorthlingArmor(material, ArmorItem.Type.CHESTPLATE, new Item.Settings()),
-                            new NorthlingArmor(material, ArmorItem.Type.LEGGINGS, new Item.Settings()),
-                            new NorthlingArmor(material, ArmorItem.Type.BOOTS, new Item.Settings())
                     ))
-                    .put(entries).armorSet()
-                    .allowSpellPowerEnchanting(false);
+                    .armorSet();
 
     public static void register(Map<String, ItemConfig.ArmorSet> configs) {
         Armor.register(configs, entries, BerserkerGroup.BERSERKER_KEY);

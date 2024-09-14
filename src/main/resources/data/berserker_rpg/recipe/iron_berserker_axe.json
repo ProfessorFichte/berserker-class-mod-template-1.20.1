@@ -7,14 +7,14 @@
   ],
   "key": {
     "W": {
-      "item": "minecraft:gold_ingot"
+      "item": "minecraft:iron_ingot"
     },
     "R": {
       "item": "minecraft:bone"
     }
   },
   "result": {
-    "item": "berserker_rpg:golden_berserker_axe",
+    "id": "berserker_rpg:iron_berserker_axe",
     "count": 1
   }
 }

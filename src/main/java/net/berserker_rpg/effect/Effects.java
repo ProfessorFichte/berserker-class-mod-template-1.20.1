@@ -6,33 +6,55 @@ import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.Identifier;
 import net.more_rpg_classes.entity.attribute.MRPGCEntityAttributes;
 import net.spell_engine.api.effect.*;
+
+import java.util.ArrayList;
 
 import static net.berserker_rpg.BerserkerClassMod.MOD_ID;
 import static net.berserker_rpg.BerserkerClassMod.effectsConfig;
 
 public class Effects {
-    public static StatusEffect RAGE = new CustomStatusEffect(StatusEffectCategory.BENEFICIAL, 0xf70000);
-    public static StatusEffect SOUL_DEVOURER = new CustomStatusEffect(StatusEffectCategory.BENEFICIAL, 0x01d9cf);
-    public static StatusEffect BLOOD_RECKONING = new BloodReckoningEffect(StatusEffectCategory.BENEFICIAL, 0xf70000);
+    private static final ArrayList<Entry> entries = new ArrayList<>();
+    public static class Entry {
+        public final Identifier id;
+        public final StatusEffect effect;
+        public RegistryEntry<StatusEffect> registryEntry;
+        public Entry(String name, StatusEffect effect) {
+            this.id = Identifier.of(MOD_ID, name);
+            this.effect = effect;
+            entries.add(this);
+        }
+        public void register() {
+            registryEntry = Registry.registerReference(Registries.STATUS_EFFECT, id, effect);
+        }
+        public Identifier modifierId() {
+            return Identifier.of(MOD_ID, "effect." + id.getPath());
+        }
+    }
+
+    public static final Entry RAGE=  new Entry("rage",new CustomStatusEffect(StatusEffectCategory.BENEFICIAL, 0xf70000));
+    public static final Entry SOUL_DEVOURER =  new Entry("soul_devourer",new CustomStatusEffect(StatusEffectCategory.BENEFICIAL, 0x01d9cf));
+    public static final Entry BLOOD_RECKONING=  new Entry("blood_reckoning",new BloodReckoningEffect(StatusEffectCategory.BENEFICIAL, 0xf70000));
+
 
     public static void register(){
-        RAGE.addAttributeModifier(MRPGCEntityAttributes.RAGE_MODIFIER, "4ff7e39a-22d1-4b65-b87a-815883237180",
-                        effectsConfig.value.rage_rage_attribute_increase_per_stack, EntityAttributeModifier.Operation.MULTIPLY_BASE)
-                .addAttributeModifier(EntityAttributes.GENERIC_ATTACK_SPEED, "3098b421-2316-4b40-9fcf-71c84fd85fc3",
-                        effectsConfig.value.rage_attack_speed_increase_per_stack, EntityAttributeModifier.Operation.MULTIPLY_BASE);
+        RAGE.effect
+                .addAttributeModifier(MRPGCEntityAttributes.RAGE_MODIFIER, RAGE.modifierId(),
+                        effectsConfig.value.rage_rage_attribute_increase_per_stack, EntityAttributeModifier.Operation.ADD_MULTIPLIED_BASE)
+                .addAttributeModifier(EntityAttributes.GENERIC_ATTACK_SPEED, RAGE.modifierId(),
+                        effectsConfig.value.rage_attack_speed_increase_per_stack, EntityAttributeModifier.Operation.ADD_MULTIPLIED_BASE);
 
-        Synchronized.configure(RAGE,true);
-        Synchronized.configure(SOUL_DEVOURER,true);
-        Synchronized.configure(BLOOD_RECKONING,true);
+        Synchronized.configure(RAGE.effect,true);
+        Synchronized.configure(SOUL_DEVOURER.effect,true);
+        Synchronized.configure(BLOOD_RECKONING.effect,true);
 
-        HealthImpacting.configureDamageTaken(RAGE,effectsConfig.value.rage_increased_incoming_damage_per_stack);
+        HealthImpacting.configureDamageTaken(RAGE.effect,effectsConfig.value.rage_increased_incoming_damage_per_stack);
 
-        int berserker_effect_id = 5400;
-        Registry.register(Registries.STATUS_EFFECT, berserker_effect_id++, new Identifier(MOD_ID, "rage").toString(), RAGE);
-        Registry.register(Registries.STATUS_EFFECT, berserker_effect_id++, new Identifier(MOD_ID, "soul_devourer").toString(), SOUL_DEVOURER);
-        Registry.register(Registries.STATUS_EFFECT, berserker_effect_id++, new Identifier(MOD_ID, "blood_reckoning").toString(), BLOOD_RECKONING);
+        for (var entry: entries) {
+            entry.register();
+        }
     }
 }

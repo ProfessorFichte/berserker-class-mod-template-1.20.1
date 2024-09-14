@@ -15,7 +15,7 @@
     "item": "berserker_rpg:netherite_berserker_axe"
   },
   "result": {
-    "item": "berserker_rpg:ruby_berserker_axe"
+    "id": "berserker_rpg:ruby_berserker_axe"
   },
   "template": {
     "item": "minecraft:netherite_upgrade_smithing_template"

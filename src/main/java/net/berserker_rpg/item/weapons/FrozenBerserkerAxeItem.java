@@ -1,47 +1,38 @@
 package net.berserker_rpg.item.weapons;
 
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ToolMaterial;
-import net.minecraft.registry.tag.BlockTags;
 import net.more_rpg_classes.effect.MRPGCEffects;
-import net.spell_engine.api.item.weapon.MeleeWeaponItem;
+import net.spell_engine.api.item.weapon.SpellSwordItem;
 
-public class FrozenBerserkerAxeItem extends MeleeWeaponItem {
+public class FrozenBerserkerAxeItem extends SpellSwordItem {
     public FrozenBerserkerAxeItem(ToolMaterial material, Settings settings) {
         super(material, settings);
     }
-
     //10% chance to frost
     @Override
     public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        int frosted_duration = 100;
+        int frosted_duration = 200;
         int frosted_chance = 10;
-        int randomrange_freeze = (int) ((Math.random() * (1 + frosted_chance)) + 1);
+        int roll = (int) ((Math.random() * (1 + frosted_chance)) + 1);
 
-        if (randomrange_freeze >= frosted_duration ) {
-            target.addStatusEffect(new StatusEffectInstance(MRPGCEffects.FROSTED, frosted_duration));
 
+        if(!target.hasStatusEffect(MRPGCEffects.FROZEN_SOLID.registryEntry)){
+            if (roll >= frosted_chance)    {
+                if(!target.hasStatusEffect(MRPGCEffects.FROSTED.registryEntry)){
+
+                    target.addStatusEffect(new StatusEffectInstance(MRPGCEffects.FROSTED.registryEntry,frosted_duration,0,false,false,true));
+                }else {
+                    int currentAmplifier = target.getStatusEffect(MRPGCEffects.FROSTED.registryEntry).getAmplifier();
+                    target.addStatusEffect(new StatusEffectInstance(MRPGCEffects.FROSTED.registryEntry,frosted_duration,currentAmplifier+1,false,false,true));
+                }
+            }
         }
-        stack.damage(1, attacker, (e)->{
-            e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND);
-        });
+
+        stack.damage(1, attacker, EquipmentSlot.MAINHAND);
         return true;
-    }
-    @Override
-    public float getMiningSpeedMultiplier(ItemStack stack, BlockState state) {
-        if (state.isOf(Blocks.COBWEB)) {
-            return 15.0F;
-        } else {
-            return state.isIn(BlockTags.SWORD_EFFICIENT) ? 1.5F : 1.0F;
-        }
-    }
-    @Override
-    public boolean isSuitableFor(BlockState state) {
-        return state.isOf(Blocks.COBWEB);
     }
 }

@@ -4,6 +4,7 @@ import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageTypes;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
 import net.more_rpg_classes.entity.attribute.MRPGCEntityAttributes;
 import net.spell_power.SpellPowerMod;
@@ -14,17 +15,20 @@ import static net.spell_power.api.SpellPowerMechanics.PERCENT_ATTRIBUTE_BASELINE
 
 public class BerserkerSpellSchool {
     public static final SpellSchool BERSERKER_MELEE = new SpellSchool(SpellSchool.Archetype.MAGIC,
-            new Identifier(SpellPowerMod.ID, "berserker_melee"),
+            Identifier.of(SpellPowerMod.ID, "berserker_melee"),
             0xb3b3b3,
             DamageTypes.PLAYER_ATTACK,
             EntityAttributes.GENERIC_ATTACK_DAMAGE);
 
     public static void initialize() {
-        BERSERKER_MELEE.attributeManagement = SpellSchool.Manage.EXTERNAL;
         BERSERKER_MELEE.addSource(SpellSchool.Trait.POWER, SpellSchool.Apply.ADD, query -> {
             var power = query.entity().getAttributeValue(EntityAttributes.GENERIC_ATTACK_DAMAGE);
-            var level = EnchantmentHelper.getLevel(Enchantments.SHARPNESS, query.entity().getMainHandStack());
-            power *= 1 + (0.05 * level);
+            var world = query.entity().getWorld();
+            var sharpness = world.getRegistryManager().get(RegistryKeys.ENCHANTMENT).getEntry(Enchantments.SHARPNESS);
+            if (sharpness.isPresent()) {
+                var level = EnchantmentHelper.getLevel(sharpness.get(), query.entity().getMainHandStack());
+                power *= 1 + (0.05 * level);
+            }
             return power;
         });
         BERSERKER_MELEE.addSource(SpellSchool.Trait.CRIT_CHANCE, new SpellSchool.Source(SpellSchool.Apply.ADD, query ->  {

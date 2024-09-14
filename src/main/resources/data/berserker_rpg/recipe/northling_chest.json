@@ -1,9 +1,9 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "RRR",
-    "R W",
-    "W W"
+    "R R",
+    "WRW",
+    "ZZZ"
   ],
   "key": {
     "W": {
@@ -11,10 +11,13 @@
     },
     "R": {
       "tag": "more_rpg_classes:polar_bear_fur"
+    },
+    "Z": {
+      "item": "minecraft:chain"
     }
   },
   "result": {
-    "item": "berserker_rpg:northling_legs",
+    "id": "berserker_rpg:northling_chest",
     "count": 1
   }
 }

@@ -7,14 +7,14 @@
   ],
   "key": {
     "W": {
-      "item": "minecraft:cobblestone"
+      "item": "minecraft:gold_ingot"
     },
     "R": {
-      "item": "minecraft:stick"
+      "item": "minecraft:bone"
     }
   },
   "result": {
-    "item": "berserker_rpg:stone_berserker_axe",
+    "id": "berserker_rpg:golden_berserker_axe",
     "count": 1
   }
 }

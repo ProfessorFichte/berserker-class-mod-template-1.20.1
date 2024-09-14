@@ -1,20 +1,17 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
+    "RRR",
     "R R",
-    "W W",
     "   "
   ],
   "key": {
-    "W": {
-      "tag": "more_rpg_classes:wolf_fur"
-    },
     "R": {
-      "item": "minecraft:leather"
+      "tag": "more_rpg_classes:polar_bear_fur"
     }
   },
   "result": {
-    "item": "berserker_rpg:wildling_feet",
+    "id": "berserker_rpg:northling_head",
     "count": 1
   }
 }

@@ -10,11 +10,11 @@
       "item": "minecraft:leather"
     },
     "R": {
-      "tag": "more_rpg_classes:wolf_fur"
+      "tag": "more_rpg_classes:polar_bear_fur"
     }
   },
   "result": {
-    "item": "berserker_rpg:wildling_legs",
+    "id": "berserker_rpg:northling_legs",
     "count": 1
   }
 }

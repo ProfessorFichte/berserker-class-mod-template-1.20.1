@@ -7,14 +7,14 @@
   ],
   "key": {
     "W": {
-      "item": "minecraft:iron_ingot"
+      "item": "minecraft:cobblestone"
     },
     "R": {
-      "item": "minecraft:bone"
+      "item": "minecraft:stick"
     }
   },
   "result": {
-    "item": "berserker_rpg:iron_berserker_axe",
+    "id": "berserker_rpg:stone_berserker_axe",
     "count": 1
   }
 }

@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "berserker_rpg:berserker_spell_book"
+      "id": "berserker_rpg:berserker_spell_book"
     },
     "title": {
       "translate": "advancements.more_rpg_content.berserker_spells.title"

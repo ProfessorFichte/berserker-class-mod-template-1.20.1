@@ -29,7 +29,7 @@ public class BerserkerItems {
 
 
     public static void registerModItems(){
-        SpellBooks.createAndRegister(new Identifier(BerserkerClassMod.MOD_ID,"berserker"), BerserkerGroup.BERSERKER_KEY);
+        SpellBooks.createAndRegister(Identifier.of(BerserkerClassMod.MOD_ID,"berserker"), BerserkerGroup.BERSERKER_KEY);
 
         ItemGroupEvents.modifyEntriesEvent(BerserkerGroup.BERSERKER_KEY).register((content) -> {
         });

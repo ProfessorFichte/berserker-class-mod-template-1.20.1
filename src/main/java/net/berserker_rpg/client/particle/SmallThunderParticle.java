@@ -4,7 +4,7 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.particle.*;
 import net.minecraft.client.world.ClientWorld;
-import net.minecraft.particle.DefaultParticleType;
+import net.minecraft.particle.SimpleParticleType;
 
 public class SmallThunderParticle extends ExplosionLargeParticle {
     protected  SmallThunderParticle(ClientWorld world, double x, double y, double z, double d, SpriteProvider spriteProvider) {
@@ -21,7 +21,7 @@ public class SmallThunderParticle extends ExplosionLargeParticle {
     }
 
     @Environment(EnvType.CLIENT)
-    public static class Factory implements ParticleFactory<DefaultParticleType> {
+    public static class Factory implements ParticleFactory<SimpleParticleType> {
 
         private final SpriteProvider spriteProvider;
 
@@ -29,7 +29,7 @@ public class SmallThunderParticle extends ExplosionLargeParticle {
             this.spriteProvider = spriteProvider;
         }
 
-        public Particle createParticle(DefaultParticleType defaultParticleType, ClientWorld clientWorld, double d, double e, double f, double g, double h, double i) {
+        public Particle createParticle(SimpleParticleType defaultParticleType, ClientWorld clientWorld, double d, double e, double f, double g, double h, double i) {
             var particle = new SmallThunderParticle(clientWorld, d, e, f, g, this.spriteProvider);
             particle.scale = 1.75F;
             particle.red = 1F;

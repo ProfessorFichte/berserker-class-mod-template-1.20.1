@@ -11,8 +11,9 @@ public class BerserkerSpellCostSource extends DamageSource {
         super(type);
     }
 
+    @Override
     public Text getDeathMessage(LivingEntity killed) {
-        return Text.of(killed.getEntityName() + " died of exhaustion");
+        return Text.of(killed.getName() + " died of exhaustion");
     }
 }
 

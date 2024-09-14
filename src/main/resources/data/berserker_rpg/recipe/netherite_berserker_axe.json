@@ -10,6 +10,6 @@
     "item": "minecraft:netherite_ingot"
   },
   "result": {
-    "item": "berserker_rpg:netherite_berserker_axe"
+    "id": "berserker_rpg:netherite_berserker_axe"
   }
 }

@@ -12,7 +12,7 @@
     "target": {
       "type": "CURSOR"
     },
-    "animation": "more_rpg_classes:bloody_strike",
+    "animation": "more_rpg_classes:one_handed_strike_cast",
     "sound": {
       "id": "minecraft:entity.player.attack.strong"
     },

@@ -15,7 +15,7 @@ import static net.berserker_rpg.BerserkerClassMod.MOD_ID;
 public class SoulDevourerRenderer implements CustomModelStatusEffect.Renderer {
 
     private static final RenderLayer RENDER_LAYER = CustomLayers.spellEffect(LightEmission.GLOW, true);
-    public static final Identifier modelId = new Identifier(MOD_ID, "effect/soul_eater");
+    public static final Identifier modelId = Identifier.of(MOD_ID, "effect/soul_eater");
 
     @Override
     public void renderEffect(int amplifier, LivingEntity livingEntity, float delta, MatrixStack matrixStack, VertexConsumerProvider vertexConsumers, int light) {
