@@ -1,13 +1,12 @@
 {
-  "school": "PHYSICAL_MELEE",
-  "group": "primary",
+  "school": "BERSERKER_MELEE",
   "range": 25.0,
   "learn": {
     "tier": 4
   },
   "cast": {
     "duration": 1.5,
-    "animation": "more_rpg_classes:thunder_call",
+    "animation": "more_rpg_classes:sky_cast_one_handed",
     "sound": {
       "id": "entity.lightning_bolt.thunder",
       "randomness": 0

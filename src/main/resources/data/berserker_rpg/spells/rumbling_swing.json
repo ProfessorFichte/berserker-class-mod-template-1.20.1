@@ -1,7 +1,6 @@
 {
   "range": 4.0,
-  "group": "primary",
-  "school": "PHYSICAL_MELEE",
+  "school": "BERSERKER_MELEE",
   "learn": {
     "tier": 4
   },
@@ -13,7 +12,7 @@
     "target": {
       "type": "CURSOR"
     },
-    "animation": "more_rpg_classes:rumbling_swing",
+    "animation": "berserker_rpg:rumbling_swing",
     "sound": {
       "id": "entity.player.attack.sweep"
     },

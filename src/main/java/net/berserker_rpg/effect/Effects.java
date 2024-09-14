@@ -14,10 +14,9 @@ import static net.berserker_rpg.BerserkerClassMod.MOD_ID;
 import static net.berserker_rpg.BerserkerClassMod.effectsConfig;
 
 public class Effects {
-    //RAGE
-    public static StatusEffect RAGE = new RageStatusEffect(StatusEffectCategory.BENEFICIAL, 0xf70000);
-    //SOUL DEVOURER
-    public static StatusEffect SOUL_DEVOURER = new SoulDevourerEffect(StatusEffectCategory.BENEFICIAL, 0x01d9cf);
+    public static StatusEffect RAGE = new CustomStatusEffect(StatusEffectCategory.BENEFICIAL, 0xf70000);
+    public static StatusEffect SOUL_DEVOURER = new CustomStatusEffect(StatusEffectCategory.BENEFICIAL, 0x01d9cf);
+    public static StatusEffect BLOOD_RECKONING = new BloodReckoningEffect(StatusEffectCategory.BENEFICIAL, 0xf70000);
 
     public static void register(){
         RAGE.addAttributeModifier(MRPGCEntityAttributes.RAGE_MODIFIER, "4ff7e39a-22d1-4b65-b87a-815883237180",
@@ -27,11 +26,13 @@ public class Effects {
 
         Synchronized.configure(RAGE,true);
         Synchronized.configure(SOUL_DEVOURER,true);
+        Synchronized.configure(BLOOD_RECKONING,true);
 
         HealthImpacting.configureDamageTaken(RAGE,effectsConfig.value.rage_increased_incoming_damage_per_stack);
 
-        int berserker_effect_id = 100;
+        int berserker_effect_id = 5400;
         Registry.register(Registries.STATUS_EFFECT, berserker_effect_id++, new Identifier(MOD_ID, "rage").toString(), RAGE);
         Registry.register(Registries.STATUS_EFFECT, berserker_effect_id++, new Identifier(MOD_ID, "soul_devourer").toString(), SOUL_DEVOURER);
+        Registry.register(Registries.STATUS_EFFECT, berserker_effect_id++, new Identifier(MOD_ID, "blood_reckoning").toString(), BLOOD_RECKONING);
     }
 }

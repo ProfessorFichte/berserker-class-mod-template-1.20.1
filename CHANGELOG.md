@@ -1,5 +1,33 @@
-1.0.6.1
+1.1.0
+Official Release of the Mod!
+###GENERAL CHANGES
+- tweaked the rage Model a bit because the texture was flickering
+- code clean up
+- removed the primary group from the special spells
+- added a crafting recipe for the Berserker Spell Tome
+- made rare & netherite tier Axes fireproof
+- updated bloody strike texture
+
+###BALANCING
+- added a physical melee berserker spell school, your spells now get enhanced crit chance & damage from your rage attribute
+- removed spell crit attributes from frozen and thunder Raid Axe and added Rage Attribute
+- again added rage attribute on the Berserker Axes
+- changed casting time and spell power coefficient of Sacrifice Drain
+- deleted undertow from the Berserker Spell Pool, still available with datapacks
+- Bloody Strike now gives Absoprtion Hearts in trade for your Health instead of Healing, for better synergy with the rage effect & attribute, to stay low on hp
+- Outrage now only clears negative effects, if the maximum rage effect amplifier is reached, you also increase the duration of the rage effect if thats the case
+- new Spell: Blood Reckoning, healing you and converting your absorption hearts to health, also doubles your active Rage Buff duration
+- Wild Rage, Blood Reckoning, Bloody Strike & Outrage now work perfectly together, getting low hp dealing high damage and then healing yourself
+- New Spell-Tier Order: 1: Wild Rage 2: Blood Reckoning 3: Bloody Strike 4: Outrage
+
+
+1.0.8
+- Added Compat to BetterEnd & BetterNether, you can craft a Aeternium Raid Axe or a Ruby Raid Axe
+- Added Tags for the Berserker Axes
+
+1.0.7
 - italian translation thanks to Zano1999
+- changed the loot injection for the 3 special weapons to the rpg series tag system
 
 1.0.6
 FIXES

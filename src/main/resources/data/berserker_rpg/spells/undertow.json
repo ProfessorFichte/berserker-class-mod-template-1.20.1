@@ -1,7 +1,7 @@
 {
   "range": 20.0,
   "group": "primary",
-  "school": "PHYSICAL_MELEE",
+  "school": "BERSERKER_MELEE",
   "learn": {
     "tier": 1
   },

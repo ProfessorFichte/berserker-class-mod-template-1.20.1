@@ -6,6 +6,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.world.RaycastContext;
@@ -22,31 +23,50 @@ import java.util.List;
 import java.util.function.Predicate;
 
 import static net.berserker_rpg.BerserkerClassMod.MOD_ID;
+import static net.berserker_rpg.BerserkerClassMod.effectsConfig;
 import static net.more_rpg_classes.util.CustomMethods.clearNegativeEffects;
 import static net.spell_engine.internals.SpellRegistry.getSpell;
 
 public class CustomSpells {
     public static void register() {
-        float bloody_strike_heal = 1.0F;
         float spellcost_soulaxe_drain = 1.0f;
         int wild_rage_duration = 600;
 
-        ////BERSERKER_SPELLS
         /// BLOODY STRIKE
         CustomSpellHandler.register(new Identifier(MOD_ID, "bloody_strike"), (data) -> {
             CustomSpellHandler.Data data1 = (CustomSpellHandler.Data) data;
             float modifier = getSpell(new Identifier(MOD_ID, "bloody_strike")).impact[0].action.damage.spell_power_coefficient;
-            var actualSchool = data1.caster().getAttributeValue(EntityAttributes.GENERIC_ATTACK_DAMAGE);
+            float rage_attr = (float) ((data1.caster().getAttributeValue(MRPGCEntityAttributes.RAGE_MODIFIER)-100));
+            float actual_absorption = data1.caster().getAbsorptionAmount();
+            var attack_damage = data1.caster().getAttributeValue(EntityAttributes.GENERIC_ATTACK_DAMAGE);
+            float actual_health_player = data1.caster().getHealth();
+            double amount = modifier * attack_damage;
+            float maxabsoprtion = data1.caster().getMaxHealth() * (effectsConfig.value.bloody_strike_absorption_limit_max_health + ((rage_attr/100) * effectsConfig.value.bloody_strike_rage_absorption_boost_multiplier));
+            float absorptionamount = ((float) amount * effectsConfig.value.bloody_strike_damage_to_absorption)+ actual_absorption;
+            float self_damage_calc = (float) (amount * effectsConfig.value.bloody_strike_self_damage);
+
             for (Entity entity : data1.targets()) {
                 if (entity instanceof LivingEntity living) {
-                    double amount = modifier * actualSchool;
+                    if(actual_health_player <= 0.5F){
+                        data1.caster().addStatusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS, 160,0,false,false,true));
+                        data1.caster().addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 160,0,false,false,true));
+                    }else{
+                        if(self_damage_calc > actual_health_player){
+                            data1.caster().setHealth(0.5F);
+                        }else{
+                            data1.caster().setHealth(actual_health_player- self_damage_calc);
+                        }
+                        if(absorptionamount < maxabsoprtion){
+                            data1.caster().setAbsorptionAmount(absorptionamount);
+                        }else {
+                            data1.caster().setAbsorptionAmount(maxabsoprtion);
+                        }
+                    }
+
                     if (living.isUndead()) {
                         entity.damage(living.getDamageSources().playerAttack(data1.caster()),(float) amount);
-                        //entity.damage(SpellDamageSource.player(actualSchool, data1.caster()), (float) amount);
                     } else {
                         SpellHelper.performImpacts(entity.getWorld(), data1.caster(), entity, entity, new SpellInfo(getSpell(new Identifier(MOD_ID, "bloody_strike")),new Identifier(MOD_ID)), data1.impactContext());
-                        float healamount = (float) amount * bloody_strike_heal;
-                        data1.caster().heal(healamount);
                         ((LivingEntity) entity).addStatusEffect(new StatusEffectInstance(MRPGCEffects.BLEEDING,6));
                     }
                     return true;
@@ -54,6 +74,7 @@ public class CustomSpells {
             }
             return true;
         });
+
         /// WILD RAGE
         CustomSpellHandler.register(new Identifier(MOD_ID, "wild_rage"), (data) -> {
             CustomSpellHandler.Data data1 = (CustomSpellHandler.Data) data;
@@ -70,33 +91,27 @@ public class CustomSpells {
             }
             return true;
         });
+
         /// OUTRAGE
         CustomSpellHandler.register(new Identifier(MOD_ID, "outrage"), (data) -> {
             CustomSpellHandler.Data data1 = (CustomSpellHandler.Data) data;
-            float modifier = getSpell(new Identifier(MOD_ID, "outrage")).impact[0].action.damage.spell_power_coefficient;
-            double rage_attr = (data1.caster().getAttributeValue(MRPGCEntityAttributes.RAGE_MODIFIER)-100) / 10;
-
-            Predicate<Entity> selectionPredicate = (target2) -> {
-                return (TargetHelper.actionAllowed(TargetHelper.TargetingMode.DIRECT, TargetHelper.Intent.HARMFUL, data1.caster(), target2)
-                );
-            };
             if (!data1.caster().getWorld().isClient) {
                 for (Entity entity : data1.targets()) {
-
+                    SpellHelper.performImpacts(entity.getWorld(), data1.caster(), entity, entity, new SpellInfo(getSpell(new Identifier(MOD_ID, "outrage")),new Identifier(MOD_ID)), data1.impactContext());
                     if (data1.caster().hasStatusEffect(Effects.RAGE)) {
-                        SoundHelper.playSound(data1.caster().getWorld(), entity, getSpell(new Identifier(MOD_ID, "outrage")).impact[0].sound);
-                        double amount2 = (((float)rage_attr * modifier));
-                        entity.damage(entity.getDamageSources().playerAttack(data1.caster()),(float) amount2);
-                        SpellHelper.performImpacts(entity.getWorld(), data1.caster(), entity, entity, new SpellInfo(getSpell(new Identifier(MOD_ID, "outrage")),new Identifier(MOD_ID)), data1.impactContext());
-                        clearNegativeEffects(data1.caster(),true);
-                    }else{
-                        SpellHelper.performImpacts(entity.getWorld(), data1.caster(), entity, entity, new SpellInfo(getSpell(new Identifier(MOD_ID, "outrage")),new Identifier(MOD_ID)), data1.impactContext());
-                        SoundHelper.playSound(data1.caster().getWorld(), entity, getSpell(new Identifier(MOD_ID, "outrage")).impact[0].sound);
+                        final int amp_rage = data1.caster().getStatusEffect(Effects.RAGE).getAmplifier();
+                        final int dura_rage = data1.caster().getStatusEffect(Effects.RAGE).getDuration();
+                        int rage_amplifier_max = effectsConfig.value.rage_max_amplifier_stack - 1;
+                        if(amp_rage == rage_amplifier_max){
+                            clearNegativeEffects(data1.caster(),true);
+                            data1.caster().addStatusEffect(new StatusEffectInstance(Effects.RAGE, dura_rage + 10,rage_amplifier_max,false,false,true));
+                        }
                     }
                 }
             }
             return false;
         });
+
         /// SOULAXE DRAIN
         CustomSpellHandler.register(new Identifier(MOD_ID,"soulaxe_drain"),(data) -> {
             CustomSpellHandler.Data data1 = (CustomSpellHandler.Data) data;
@@ -129,6 +144,7 @@ public class CustomSpells {
             }
             return true;
         });
+
         /*
         /// NORDIC STORM
         CustomSpellHandler.register(new Identifier(MOD_ID, "nordic_storm"), (data) -> {

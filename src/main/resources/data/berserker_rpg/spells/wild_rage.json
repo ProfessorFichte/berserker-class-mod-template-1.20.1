@@ -1,8 +1,8 @@
 {
-  "school": "PHYSICAL_MELEE",
+  "school": "BERSERKER_MELEE",
   "range": 5.0,
   "learn": {
-    "tier": 3
+    "tier": 1
   },
   "cast": {
     "duration": 0

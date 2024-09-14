@@ -1,16 +1,11 @@
 package net.berserker_rpg.item.weapons;
 
-import com.google.common.collect.Multimap;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.attribute.EntityAttribute;
-import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.registry.tag.BlockTags;
 import net.spell_engine.api.item.weapon.MeleeWeaponItem;
-import net.spell_engine.api.item.weapon.SpellSwordItem;
 
 public class ThunderBerserkerAxeItem extends MeleeWeaponItem {
     public ThunderBerserkerAxeItem(ToolMaterial material, Settings settings) {

@@ -43,8 +43,12 @@ public class PlayerEntityMixin {
         PlayerEntity player = (PlayerEntity)(Object)this;
         if (player instanceof ServerPlayerEntity) {
             if (player.hasStatusEffect(Effects.RAGE)) {
-                int rage_berserker_chance = 10; int rage_duration = 500; int rage_amplifier_max = effectsConfig.value.rage_max_amplifier_stack - 1;
-                increaseAmpByChance(player,Effects.RAGE,rage_duration,1,rage_amplifier_max,rage_berserker_chance);
+                int dura_rage = player.getStatusEffect(Effects.RAGE).getDuration();
+                final int amp_rage = player.getStatusEffect(Effects.RAGE).getAmplifier();
+                int rage_amplifier_max = effectsConfig.value.rage_max_amplifier_stack - 1;
+                if(amp_rage != rage_amplifier_max){
+                    player.addStatusEffect(new StatusEffectInstance(Effects.RAGE, dura_rage,amp_rage+1,false,false,true));
+                }
             }
         }
     }

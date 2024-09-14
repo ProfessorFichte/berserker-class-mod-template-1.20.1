@@ -1,6 +1,5 @@
 {
-  "school": "PHYSICAL_MELEE",
-  "group": "primary",
+  "school": "BERSERKER_MELEE",
   "range": 3.0,
   "learn": {
     "tier": 4
@@ -8,7 +7,7 @@
   "cast": {
     "duration": 0.5,
     "movement_speed": 1.2,
-    "animation": "more_rpg_classes:nordic_storm",
+    "animation": "berserker_rpg:nordic_storm",
     "sound": {
       "id": "spell_engine:generic_frost_impact",
       "randomness": 0

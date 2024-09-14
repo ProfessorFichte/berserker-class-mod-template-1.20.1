@@ -1,8 +1,8 @@
 {
   "spell_ids": [
-    "berserker_rpg:undertow",
-    "berserker_rpg:bloody_strike",
     "berserker_rpg:wild_rage",
+    "berserker_rpg:blood_reckoning",
+    "berserker_rpg:bloody_strike",
     "berserker_rpg:outrage"
   ]
 }

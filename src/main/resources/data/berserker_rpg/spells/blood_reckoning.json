@@ -1,0 +1,71 @@
+{
+  "school": "BERSERKER_MELEE",
+  "range": 5,
+  "learn": {
+    "tier": 2
+  },
+  "cast": {
+    "duration": 0
+  },
+  "release": {
+    "target": {
+      "type": "AREA",
+      "area": {
+        "distance_dropoff": "SQUARED",
+        "angle_degrees": 360
+      }
+    },
+    "animation": "more_rpg_classes:two_handed_roar",
+    "sound": {
+      "id": "minecraft:entity.warden.roar"
+    },
+    "particles": [
+      {
+        "particle_id": "spell_engine:weakness_smoke",
+        "shape": "SPHERE",
+        "origin": "CENTER",
+        "count": 10.0,
+        "min_speed": 0.3,
+        "max_speed": 0.4
+      }
+    ]
+  },
+  "impact": [
+    {
+      "action": {
+        "type": "DAMAGE",
+        "damage": {
+          "spell_power_coefficient": 0.2
+        }
+      },
+      "particles": [
+        {
+          "particle_id": "spell_engine:weakness_smoke",
+          "shape": "SPHERE",
+          "origin": "CENTER",
+          "count": 10.0,
+          "min_speed": 0.3,
+          "max_speed": 0.4
+        }
+      ]
+    },
+    {
+      "action": {
+        "type": "STATUS_EFFECT",
+        "status_effect": {
+          "effect_id": "berserker_rpg:blood_reckoning",
+          "duration": 8,
+          "apply_mode": "SET",
+          "amplifier": 0,
+          "show_particles": false
+        },
+        "apply_to_caster": true
+      }
+    }
+  ],
+  "cost": {
+    "exhaust": 0.3,
+    "cooldown_duration": 20,
+    "cooldown_haste_affected": "false"
+  }
+}

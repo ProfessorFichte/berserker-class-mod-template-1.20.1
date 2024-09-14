@@ -1,14 +1,13 @@
 {
   "school": "SOUL",
-  "group": "primary",
   "range": 4.0,
   "learn": {
     "tier": 4
   },
   "cast": {
-    "duration": 3.0,
+    "duration": 1.0,
     "movement_speed": 0.0,
-    "animation": "more_rpg_classes:sacrifice",
+    "animation": "berserker_rpg:sacrifice",
     "particles": [
       {
         "particle_id": "minecraft:soul",
@@ -36,7 +35,6 @@
     "target": {
       "type": "AREA",
       "area": {
-        "distance_dropoff": "SQUARED",
         "angle_degrees": 360.0
       }
     }
@@ -46,7 +44,7 @@
       "action": {
         "type": "DAMAGE",
         "damage": {
-          "spell_power_coefficient": 1.2
+          "spell_power_coefficient": 2.5
         }
       },
       "particles": [
@@ -81,7 +79,7 @@
   ],
   "cost": {
     "exhaust": 1.0,
-    "cooldown_duration": 20.0,
+    "cooldown_duration": 25.0,
     "cooldown_proportional": true,
     "cooldown_haste_affected": "false"
   }
