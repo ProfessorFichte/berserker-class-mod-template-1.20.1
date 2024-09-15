@@ -1,3 +1,7 @@
+2.0.1
+- outrage cast duration was 20 seconds accidentally, turned back to 4
+- increased bloody strike self damage and nerfed the amount of absorption you get (configurable in effects config)
+
 2.0.0
 - 1.21.x Update
 - new Status Effect, Blood Sacrifice for Bloody Strike due to Absorption logic changes in new minecraft version
@@ -18,7 +22,7 @@ Official Release of the Mod!
 - again added rage attribute on the Berserker Axes
 - changed casting time and spell power coefficient of Sacrifice Drain
 - deleted undertow from the Berserker Spell Pool, still available with datapacks
-- Bloody Strike now gives Absoprtion Hearts in trade for your Health instead of Healing, for better synergy with the rage effect & attribute, to stay low on hp
+- Bloody Strike now gives Absorption Hearts in trade for your Health instead of Healing, for better synergy with the rage effect & attribute, to stay low on hp
 - Outrage now only clears negative effects, if the maximum rage effect amplifier is reached, you also increase the duration of the rage effect if thats the case
 - new Spell: Blood Reckoning, healing you and converting your absorption hearts to health, also doubles your active Rage Buff duration
 - Wild Rage, Blood Reckoning, Bloody Strike & Outrage now work perfectly together, getting low hp dealing high damage and then healing yourself
