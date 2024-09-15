@@ -1,5 +1,6 @@
 2.0.0
 - 1.21.x Update
+- new Status Effect, Blood Sacrifice for Bloody Strike due to Absorption logic changes in new minecraft version
 
 1.1.0
 Official Release of the Mod!

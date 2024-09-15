@@ -30,6 +30,8 @@
   "effect.berserker_rpg.soul_devourer.description": "Collect souls when you kill your targets.",
   "effect.berserker_rpg.blood_reckoning": "Blood Reckoning",
   "effect.berserker_rpg.blood_reckoning.description": "Heals you and converts absorption hearts to health.",
+  "effect.berserker_rpg.blood_sacrifice": "Blood Sacrifice",
+  "effect.berserker_rpg.blood_sacrifice.description": "Converts your health to absorption hearts.",
 
   "death.attack.berserker_cost": "%1$s brach zusammen durch Erschpöpfung.",
 

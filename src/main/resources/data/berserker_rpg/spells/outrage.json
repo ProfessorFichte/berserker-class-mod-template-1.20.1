@@ -5,7 +5,7 @@
     "tier": 4
   },
   "cast": {
-    "duration": 4,
+    "duration": 20,
     "movement_speed": 1.0,
     "animation": "berserker_rpg:outrage",
     "sound": {

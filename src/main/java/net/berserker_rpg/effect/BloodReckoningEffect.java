@@ -1,6 +1,7 @@
 package net.berserker_rpg.effect;
 
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -18,7 +19,7 @@ public class BloodReckoningEffect extends StatusEffect {
 
     public void onApplied(LivingEntity entity, int amplifier) {
         super.onApplied(entity, amplifier);
-        final float absorption = entity.getAbsorptionAmount();
+        final float absorption = (float) entity.getAttributeValue(EntityAttributes.GENERIC_MAX_ABSORPTION);
         final float base_heal = effectsConfig.value.blood_reckoning_base_heal;
         entity.heal(base_heal + (absorption * effectsConfig.value.blood_reckoning_absoprtion_to_heal));
         if(entity.hasStatusEffect(Effects.RAGE.registryEntry)){

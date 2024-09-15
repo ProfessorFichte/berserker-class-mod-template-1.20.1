@@ -51,6 +51,8 @@
   "spell.berserker_rpg.outrage.description": "Schlägt wild zu, verursacht {damage} physischen Schaden. Entfernt negative Effekte und erhöt die Dauer des Wuteffekts, wenn die Maximale Wut Stufe erreicht wurde.",
   "spell.berserker_rpg.blood_reckoning.name": "Blutabrechnung",
   "spell.berserker_rpg.blood_reckoning.description": "Füge {damage} physischen Schaden um dich herum zu und wandele Absorption in Leben um. Erhöht außerdem die Wut-Effektdauer.",
+  "effect.berserker_rpg.blood_sacrifice": "Blutopfer",
+  "effect.berserker_rpg.blood_sacrifice.description": "Wandelt deine Absorbation in Leben um.",
 
   "advancements.more_rpg_content.raid_axe.title": "Zu den Schiffen!",
   "advancements.more_rpg_content.raid_axe.description": "Erhalte eine Eisenaxt des Plünderers!",

@@ -38,38 +38,28 @@ public class CustomSpells {
         CustomSpellHandler.register(Identifier.of(MOD_ID, "bloody_strike"), (data) -> {
             CustomSpellHandler.Data data1 = (CustomSpellHandler.Data) data;
             float modifier = getSpell(Identifier.of(MOD_ID, "bloody_strike")).impact[0].action.damage.spell_power_coefficient;
-            float rage_attr = (float) ((data1.caster().getAttributeValue(MRPGCEntityAttributes.RAGE_MODIFIER)-100));
-            float actual_absorption = data1.caster().getAbsorptionAmount();
             var attack_damage = data1.caster().getAttributeValue(EntityAttributes.GENERIC_ATTACK_DAMAGE);
             float actual_health_player = data1.caster().getHealth();
             double amount = modifier * attack_damage;
-            float maxabsoprtion = data1.caster().getMaxHealth() * (effectsConfig.value.bloody_strike_absorption_limit_max_health + ((rage_attr/100) * effectsConfig.value.bloody_strike_rage_absorption_boost_multiplier));
-            float absorptionamount = ((float) amount * effectsConfig.value.bloody_strike_damage_to_absorption)+ actual_absorption;
             float self_damage_calc = (float) (amount * effectsConfig.value.bloody_strike_self_damage);
 
             for (Entity entity : data1.targets()) {
                 if (entity instanceof LivingEntity living) {
                     if(actual_health_player <= 0.5F){
-                        data1.caster().addStatusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS, 160,0,false,false,true));
-                        data1.caster().addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 160,0,false,false,true));
+                        data1.caster().addStatusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS, 300,2,false,false,true));
+                        data1.caster().addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 300,2,false,false,true));
+                        entity.damage(living.getDamageSources().playerAttack(data1.caster()),(float) amount/2);
                     }else{
+                        SpellHelper.performImpacts(entity.getWorld(), data1.caster(), entity, entity, new SpellInfo(getSpell(Identifier.of(MOD_ID, "bloody_strike")),Identifier.of(MOD_ID)), data1.impactContext());
+                        EntityType<?> type = ((Entity) living).getType();
+                        if(!type.isIn(EntityTypeTags.UNDEAD)){
+                            ((LivingEntity) entity).addStatusEffect(new StatusEffectInstance(MRPGCEffects.BLEEDING.registryEntry,100));
+                        }
                         if(self_damage_calc > actual_health_player){
                             data1.caster().setHealth(0.5F);
                         }else{
                             data1.caster().setHealth(actual_health_player- self_damage_calc);
                         }
-                        if(absorptionamount < maxabsoprtion){
-                            data1.caster().setAbsorptionAmount(absorptionamount);
-                        }else {
-                            data1.caster().setAbsorptionAmount(maxabsoprtion);
-                        }
-                    }
-                    EntityType<?> type = ((Entity) living).getType();
-                    if(type.isIn(EntityTypeTags.UNDEAD)){
-                        entity.damage(living.getDamageSources().playerAttack(data1.caster()),(float) amount);
-                    } else {
-                        SpellHelper.performImpacts(entity.getWorld(), data1.caster(), entity, entity, new SpellInfo(getSpell(Identifier.of(MOD_ID, "bloody_strike")),Identifier.of(MOD_ID)), data1.impactContext());
-                        ((LivingEntity) entity).addStatusEffect(new StatusEffectInstance(MRPGCEffects.BLEEDING.registryEntry,100));
                     }
                     return true;
                 }
