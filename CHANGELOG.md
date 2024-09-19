@@ -1,3 +1,7 @@
+2.0.2
+- Spell Engine API Update (1.1.0 + 1.21.1)
+- fixed translation file damage calculating-translation for spells
+
 2.0.1
 - outrage cast duration was 20 seconds accidentally, turned back to 4
 - increased bloody strike self damage and nerfed the amount of absorption you get (configurable in effects config)
