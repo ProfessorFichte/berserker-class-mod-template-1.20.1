@@ -1,3 +1,6 @@
+2.0.3
+- Northling Armor used Wildling Armor texture, oops
+
 2.0.2
 - Spell Engine API Update (1.1.0 + 1.21.1)
 - fixed translation file damage calculating-translation for spells

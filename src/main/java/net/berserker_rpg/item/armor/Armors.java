@@ -113,7 +113,7 @@ public class Armors {
                     material_northling,
                     Identifier.of(MOD_ID, "northling"),
                     25,
-                    WildlingArmor::new,
+                    NorthlingArmor::new,
                     ItemConfig.ArmorSet.with(
                             new ItemConfig.ArmorSet.Piece(2)
                                     .addAll(List.of(
