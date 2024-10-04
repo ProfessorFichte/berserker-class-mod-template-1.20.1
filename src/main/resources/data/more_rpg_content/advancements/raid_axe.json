@@ -22,7 +22,11 @@
         "items": [
           {
             "items": [
-              "berserker_rpg:iron_berserker_axe"
+              "berserker_rpg:stone_berserker_axe",
+              "berserker_rpg:iron_berserker_axe",
+              "berserker_rpg:golden_berserker_axe",
+              "berserker_rpg:diamond_berserker_axe",
+              "berserker_rpg:netherite_berserker_axe"
             ]
           }
         ]
