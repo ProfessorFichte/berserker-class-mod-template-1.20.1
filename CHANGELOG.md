@@ -1,3 +1,8 @@
+2.1.0
+- Added 3rd tier Armor, Netherite Armor for the Berserker Class
+- Changed balancing of Armor, to match the new RPG Series balancing
+- added all the other Vanilla Material Raid Axes to the Raid Axe Advancement
+
 2.0.3
 - Northling Armor used Wildling Armor texture, oops
 

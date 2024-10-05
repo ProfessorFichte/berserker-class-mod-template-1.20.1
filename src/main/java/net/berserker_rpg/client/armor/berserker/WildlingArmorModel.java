@@ -13,7 +13,7 @@ public class WildlingArmorModel extends GeoModel<WildlingArmor> {
 
     @Override
     public Identifier getTextureResource(WildlingArmor armor) {
-        return Identifier.of(BerserkerClassMod.MOD_ID, "textures/armor/wildling_armor.png");
+        return Identifier.of(BerserkerClassMod.MOD_ID, "textures/armor/wildling.png");
     }
 
     @Override

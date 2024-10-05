@@ -13,7 +13,8 @@ public class NorthlingArmorModel extends GeoModel<NorthlingArmor> {
 
     @Override
     public Identifier getTextureResource(NorthlingArmor armor) {
-        return Identifier.of(BerserkerClassMod.MOD_ID, "textures/armor/northling_armor.png");
+        var textureId = armor.getFirstLayerId();
+        return Identifier.of(BerserkerClassMod.MOD_ID, "textures/armor/" + textureId.getPath() + ".png");
     }
 
     @Override

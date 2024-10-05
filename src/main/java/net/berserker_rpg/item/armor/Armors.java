@@ -32,10 +32,13 @@ public class Armors {
     );
 
     public static final float berserker_atkspeed_T1 = 0.02F;
-    public static final float berserker_atkspeed_T2 = 0.04F;
     public static final float berserker_rage_T1 = 0.025F;
+    public static final float berserker_atkspeed_T2 = 0.02F;
     public static final float berserker_rage_T2 = 0.05F;
-    public static final float berserker_atkdamage_T2 = 0.03F;
+    public static final float berserker_atkdamage_T2 = 0.04F;
+    public static final float berserker_atkspeed_T3 = 0.02F;
+    public static final float berserker_rage_T3 = 0.075F;
+    public static final float berserker_atkdamage_T3 = 0.05F;
 
 
     public static RegistryEntry<ArmorMaterial> material(String name,
@@ -56,15 +59,20 @@ public class Armors {
 
     public static RegistryEntry<ArmorMaterial> material_wildling = material(
             "wildling",
-            1, 3, 2, 1,
+            1, 3, 3, 1,
             9,
             SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, WILDLING_INGREDIENTS);
 
     public static RegistryEntry<ArmorMaterial> material_northling = material(
             "northling",
-            2, 5, 3, 2,
+            2, 4, 4, 2,
             11,
             SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, NORTHLING_INGREDIENTS);
+    public static RegistryEntry<ArmorMaterial> material_netherite_northling = material(
+            "netherite_northling",
+            2, 4, 4, 2,
+            20,
+            SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, () -> { return Ingredient.ofItems(Items.NETHERITE_INGOT); });
 
     public static final ArrayList<Armor.Entry> entries = new ArrayList<>();
     private static Armor.Entry create(RegistryEntry<ArmorMaterial> material, Identifier id, int durability, Armor.Set.ItemFactory factory, ItemConfig.ArmorSet defaults) {
@@ -95,7 +103,7 @@ public class Armors {
                                             ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_speed")),berserker_atkspeed_T1),
                                             ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("more_rpg_classes:rage_modifier")),berserker_rage_T1 )
                                     )),
-                            new ItemConfig.ArmorSet.Piece(2)
+                            new ItemConfig.ArmorSet.Piece(3)
                                     .addAll(List.of(
                                             ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_speed")),berserker_atkspeed_T1),
                                             ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("more_rpg_classes:rage_modifier")),berserker_rage_T1 )
@@ -121,13 +129,13 @@ public class Armors {
                                             ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("more_rpg_classes:rage_modifier")),berserker_rage_T2 ),
                                             ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_damage")),berserker_atkdamage_T2)
                                     )),
-                            new ItemConfig.ArmorSet.Piece(5)
+                            new ItemConfig.ArmorSet.Piece(4)
                                     .addAll(List.of(
                                             ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_speed")),berserker_atkspeed_T2),
                                             ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("more_rpg_classes:rage_modifier")),berserker_rage_T2 ),
                                             ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_damage")),berserker_atkdamage_T2)
                                     )),
-                            new ItemConfig.ArmorSet.Piece(3)
+                            new ItemConfig.ArmorSet.Piece(4)
                                     .addAll(List.of(
                                             ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_speed")),berserker_atkspeed_T2),
                                             ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("more_rpg_classes:rage_modifier")),berserker_rage_T2 ),
@@ -138,6 +146,40 @@ public class Armors {
                                             ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_speed")),berserker_atkspeed_T2),
                                             ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("more_rpg_classes:rage_modifier")),berserker_rage_T2 ),
                                             ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_damage")),berserker_atkdamage_T2)
+                                    ))
+                    ))
+                    .armorSet();
+
+    public static final Armor.Set netheriteNorthlingArmorSet =
+            create(
+                    material_netherite_northling,
+                    Identifier.of(MOD_ID, "netherite_northling"),
+                    30,
+                    NorthlingArmor::new,
+                    ItemConfig.ArmorSet.with(
+                            new ItemConfig.ArmorSet.Piece(2)
+                                    .addAll(List.of(
+                                            ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_speed")),berserker_atkspeed_T3),
+                                            ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("more_rpg_classes:rage_modifier")),berserker_rage_T3 ),
+                                            ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_damage")),berserker_atkdamage_T3)
+                                    )),
+                            new ItemConfig.ArmorSet.Piece(4)
+                                    .addAll(List.of(
+                                            ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_speed")),berserker_atkspeed_T3),
+                                            ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("more_rpg_classes:rage_modifier")),berserker_rage_T3 ),
+                                            ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_damage")),berserker_atkdamage_T3)
+                                    )),
+                            new ItemConfig.ArmorSet.Piece(4)
+                                    .addAll(List.of(
+                                            ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_speed")),berserker_atkspeed_T3),
+                                            ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("more_rpg_classes:rage_modifier")),berserker_rage_T3 ),
+                                            ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_damage")),berserker_atkdamage_T3)
+                                    )),
+                            new ItemConfig.ArmorSet.Piece(2)
+                                    .addAll(List.of(
+                                            ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_speed")),berserker_atkspeed_T3),
+                                            ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("more_rpg_classes:rage_modifier")),berserker_rage_T3 ),
+                                            ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_damage")),berserker_atkdamage_T3)
                                     ))
                     ))
                     .armorSet();

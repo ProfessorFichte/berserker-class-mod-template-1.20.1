@@ -27,7 +27,7 @@ public class BerserkerClassMod implements ModInitializer {
 	public static final Logger LOGGER = LoggerFactory.getLogger("berserker_rpg");
 
 	public static ConfigManager<ItemConfig> itemConfig = new ConfigManager<ItemConfig>
-			("items_v4", Default.itemConfig)
+			("items_v5", Default.itemConfig)
 			.builder()
 			.setDirectory(MOD_ID)
 			.sanitize(true)

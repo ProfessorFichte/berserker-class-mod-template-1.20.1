@@ -23,6 +23,10 @@
   "item.berserker_rpg.northling_chest": "Northling Suit",
   "item.berserker_rpg.northling_legs": "Northling Pants",
   "item.berserker_rpg.northling_feet": "Northling Boots",
+  "item.berserker_rpg.netherite_northling_head": "Netherite Northling Head",
+  "item.berserker_rpg.netherite_northling_chest": "Netherite Northling Suit",
+  "item.berserker_rpg.netherite_northling_legs": "Netherite Northling Pants",
+  "item.berserker_rpg.netherite_northling_feet": "Netherite Northling Boots",
 
   "effect.berserker_rpg.rage": "Rage",
   "effect.berserker_rpg.rage.description": "You deal more damage, the less health you have. Can increase the effect on hit.",

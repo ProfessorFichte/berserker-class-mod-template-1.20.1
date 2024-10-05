@@ -23,6 +23,10 @@
   "item.berserker_rpg.northling_chest": "Nordling Harnisch",
   "item.berserker_rpg.northling_legs": "Nordling Hose",
   "item.berserker_rpg.northling_feet": "Nordling Stiefel",
+  "item.berserker_rpg.netherite_northling_head": "Netherit Nordling Helm",
+  "item.berserker_rpg.netherite_northling_chest": "Netherit Nordling Harnisch",
+  "item.berserker_rpg.netherite_northling_legs": "Netherit Nordling Hose",
+  "item.berserker_rpg.netherite_northling_feet": "Netherit Nordling Stiefel",
 
   "effect.berserker_rpg.rage": "Wut",
   "effect.berserker_rpg.rage.description": "Erteile mehr Schadne umso weniger Leben du hast. Effekt kann bei Angriff erhöht werden.",
