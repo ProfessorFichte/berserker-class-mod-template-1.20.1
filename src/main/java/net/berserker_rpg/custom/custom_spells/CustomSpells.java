@@ -13,12 +13,10 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.world.RaycastContext;
 import net.more_rpg_classes.effect.MRPGCEffects;
-import net.more_rpg_classes.entity.attribute.MRPGCEntityAttributes;
 import net.spell_engine.api.spell.CustomSpellHandler;
 import net.spell_engine.api.spell.Spell;
 import net.spell_engine.api.spell.SpellInfo;
 import net.spell_engine.internals.SpellHelper;
-import net.spell_engine.utils.SoundHelper;
 import net.spell_engine.utils.TargetHelper;
 
 import java.util.List;
@@ -36,6 +34,8 @@ public class CustomSpells {
 
         /// BLOODY STRIKE
         CustomSpellHandler.register(Identifier.of(MOD_ID, "bloody_strike"), (data) -> {
+            SpellInfo spellinfo = new SpellInfo(getSpell(Identifier.of(MOD_ID, "bloody_strike")),Identifier.of(MOD_ID));
+            Spell.Impact[] impacts = getSpell(Identifier.of(MOD_ID, "bloody_strike")).impact;
             CustomSpellHandler.Data data1 = (CustomSpellHandler.Data) data;
             float modifier = getSpell(Identifier.of(MOD_ID, "bloody_strike")).impact[0].action.damage.spell_power_coefficient;
             var attack_damage = data1.caster().getAttributeValue(EntityAttributes.GENERIC_ATTACK_DAMAGE);
@@ -50,7 +50,7 @@ public class CustomSpells {
                         data1.caster().addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 300,2,false,false,true));
                         entity.damage(living.getDamageSources().playerAttack(data1.caster()),(float) amount/2);
                     }else{
-                        SpellHelper.performImpacts(entity.getWorld(), data1.caster(), entity, entity, new SpellInfo(getSpell(Identifier.of(MOD_ID, "bloody_strike")),Identifier.of(MOD_ID)), data1.impactContext());
+                        SpellHelper.performImpacts(entity.getWorld(), data1.caster(), entity, entity, spellinfo,impacts ,data1.impactContext());
                         EntityType<?> type = ((Entity) living).getType();
                         if(!type.isIn(EntityTypeTags.UNDEAD)){
                             ((LivingEntity) entity).addStatusEffect(new StatusEffectInstance(MRPGCEffects.BLEEDING.registryEntry,100));
@@ -69,6 +69,8 @@ public class CustomSpells {
 
         /// WILD RAGE
         CustomSpellHandler.register(Identifier.of(MOD_ID, "wild_rage"), (data) -> {
+            SpellInfo spellinfo = new SpellInfo(getSpell(Identifier.of(MOD_ID, "wild_rage")),Identifier.of(MOD_ID));
+            Spell.Impact[] impacts = getSpell(Identifier.of(MOD_ID, "wild_rage")).impact;
             CustomSpellHandler.Data data1 = (CustomSpellHandler.Data) data;
             Predicate<Entity> selectionPredicate = (target2) -> {
                 return (TargetHelper.actionAllowed(TargetHelper.TargetingMode.AREA, TargetHelper.Intent.HARMFUL, data1.caster(), target2)
@@ -78,7 +80,7 @@ public class CustomSpells {
                 data1.caster().addStatusEffect(new StatusEffectInstance(Effects.RAGE.registryEntry, wild_rage_duration));
                 List<Entity> list = data1.caster().getWorld().getOtherEntities(data1.caster(), data1.caster().getBoundingBox().expand(getSpell(Identifier.of(MOD_ID, "wild_rage")).range), selectionPredicate);
                 for (Entity entity : list) {
-                    SpellHelper.performImpacts(entity.getWorld(), data1.caster(), entity, entity, new SpellInfo(getSpell(Identifier.of(MOD_ID, "wild_rage")),Identifier.of(MOD_ID)), data1.impactContext());
+                    SpellHelper.performImpacts(entity.getWorld(), data1.caster(), entity, entity, spellinfo,impacts, data1.impactContext());
                 }
             }
             return true;
@@ -86,10 +88,12 @@ public class CustomSpells {
 
         /// OUTRAGE
         CustomSpellHandler.register(Identifier.of(MOD_ID, "outrage"), (data) -> {
+            SpellInfo spellinfo = new SpellInfo(getSpell(Identifier.of(MOD_ID, "outrage")),Identifier.of(MOD_ID));
+            Spell.Impact[] impacts = getSpell(Identifier.of(MOD_ID, "outrage")).impact;
             CustomSpellHandler.Data data1 = (CustomSpellHandler.Data) data;
             if (!data1.caster().getWorld().isClient) {
                 for (Entity entity : data1.targets()) {
-                    SpellHelper.performImpacts(entity.getWorld(), data1.caster(), entity, entity, new SpellInfo(getSpell(Identifier.of(MOD_ID, "outrage")),Identifier.of(MOD_ID)), data1.impactContext());
+                    SpellHelper.performImpacts(entity.getWorld(), data1.caster(), entity, entity, spellinfo,impacts ,data1.impactContext());
                     if (data1.caster().hasStatusEffect(Effects.RAGE.registryEntry)) {
                         final int amp_rage = data1.caster().getStatusEffect(Effects.RAGE.registryEntry).getAmplifier();
                         final int dura_rage = data1.caster().getStatusEffect(Effects.RAGE.registryEntry).getDuration();
@@ -106,6 +110,8 @@ public class CustomSpells {
 
         /// SOULAXE DRAIN
         CustomSpellHandler.register(Identifier.of(MOD_ID,"soulaxe_drain"),(data) -> {
+            SpellInfo spellinfo = new SpellInfo(getSpell(Identifier.of(MOD_ID, "soulaxe_drain")),Identifier.of(MOD_ID));
+            Spell.Impact[] impacts = getSpell(Identifier.of(MOD_ID, "soulaxe_drain")).impact;
             CustomSpellHandler.Data data1 = (CustomSpellHandler.Data) data;
             Predicate<Entity> selectionPredicate = (target2) -> {
                 return (TargetHelper.actionAllowed(TargetHelper.TargetingMode.AREA, TargetHelper.Intent.HARMFUL, data1.caster(), target2)
@@ -115,13 +121,15 @@ public class CustomSpells {
                 data1.caster().damage(new BerserkerSpellCostSource(data1.caster().getDamageSources().starve().getTypeRegistryEntry()), spellcost_soulaxe_drain);
                 List<Entity> list = data1.caster().getWorld().getOtherEntities(data1.caster(), data1.caster().getBoundingBox().expand(getSpell(Identifier.of(MOD_ID, "soulaxe_drain")).range), selectionPredicate);
                 for (Entity entity : list) {
-                    SpellHelper.performImpacts(entity.getWorld(), data1.caster(), entity, entity, new SpellInfo(getSpell(Identifier.of(MOD_ID, "soulaxe_drain")),Identifier.of(MOD_ID)), data1.impactContext());
+                    SpellHelper.performImpacts(entity.getWorld(), data1.caster(), entity, entity, spellinfo, impacts,data1.impactContext());
                 }
             }
             return false;
         });
         /// RUMBLING SWING
         CustomSpellHandler.register(Identifier.of(MOD_ID,"rumbling_swing"),(data) -> {
+            SpellInfo spellinfo = new SpellInfo(getSpell(Identifier.of(MOD_ID, "rumbling_swing")),Identifier.of(MOD_ID));
+            Spell.Impact[] impacts = getSpell(Identifier.of(MOD_ID, "rumbling_swing")).impact;
             float range = getSpell(Identifier.of(MOD_ID, "rumbling_swing")).range;
             CustomSpellHandler.Data data1 = (CustomSpellHandler.Data) data;
             BlockHitResult result = data1.caster().getWorld().raycast(new RaycastContext(data1.caster().getEyePos(), data1.caster().getEyePos()
@@ -132,7 +140,7 @@ public class CustomSpells {
             }
             List<Entity> list = TargetHelper.targetsFromArea(data1.caster(),data1.caster().getEyePos(),range,new Spell.Release.Target.Area(), target -> TargetHelper.allowedToHurt(data1.caster(),target) );
             for(Entity entity : list){
-                SpellHelper.performImpacts(data1.caster().getWorld(),data1.caster(),entity,data1.caster(), new SpellInfo(getSpell(Identifier.of(MOD_ID, "rumbling_swing")),Identifier.of(MOD_ID)),data1.impactContext());
+                SpellHelper.performImpacts(data1.caster().getWorld(),data1.caster(),entity,data1.caster(), spellinfo,impacts,data1.impactContext());
             }
             return true;
         });

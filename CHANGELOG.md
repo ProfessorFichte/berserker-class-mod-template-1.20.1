@@ -1,3 +1,7 @@
+2.2.0
+- Spell Engine 1.2 Update
+- added the Holy Raid Axe (Aether Variant)
+
 2.1.0
 - Added 3rd tier Armor, Netherite Armor for the Berserker Class
 - Changed balancing of Armor, to match the new RPG Series balancing
