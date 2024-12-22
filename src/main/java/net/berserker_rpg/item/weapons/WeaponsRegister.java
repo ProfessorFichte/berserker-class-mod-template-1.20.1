@@ -12,6 +12,7 @@ import net.minecraft.util.Identifier;
 import net.spell_engine.api.item.ItemConfig;
 import net.spell_engine.api.item.weapon.SpellSwordItem;
 import net.spell_engine.api.item.weapon.Weapon;
+import net.spell_power.api.SpellPowerMechanics;
 import net.spell_power.api.SpellSchools;
 
 import java.util.ArrayList;
@@ -103,6 +104,7 @@ public class WeaponsRegister {
 
     private static final String BETTER_END = "betterend";
     private static final String BETTER_NETHER = "betternether";
+    private static final String AETHER = "aether";
     //Registration
     public static void register(Map<String, ItemConfig.Weapon> configs) {
         if(FabricLoader.getInstance().isModLoaded(BETTER_NETHER)){
@@ -116,6 +118,13 @@ public class WeaponsRegister {
             berserker_axes("aeternium_berserker_axe",
                     Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, repair),15.0F, true)
                     .attribute(ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("more_rpg_classes:rage_modifier")),0.10F));
+        }
+        if (FabricLoader.getInstance().isModLoaded(AETHER)) {
+            var repair = ingredient("aether:ambrosium_shard", FabricLoader.getInstance().isModLoaded(AETHER), Items.NETHERITE_INGOT);
+            berserker_axes("aether_berserker_axe",
+                    Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, repair),15.0F, true)
+                    .attribute(ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("more_rpg_classes:rage_modifier")),0.10F));
+
         }
         Weapon.register(configs, entries, BerserkerGroup.BERSERKER_KEY);
     }
