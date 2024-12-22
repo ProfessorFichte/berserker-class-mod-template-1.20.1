@@ -1,3 +1,6 @@
+2.2.1
+- fixed rpg series aether weapon tag
+
 2.2.0
 - Spell Engine 1.2 Update
 - added the Holy Raid Axe (Aether Variant)
