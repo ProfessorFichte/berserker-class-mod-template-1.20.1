@@ -4,6 +4,9 @@
   "learn": {
     "tier": 4
   },
+  "scroll":{
+    "generate": false
+  },
   "cast": {
     "duration": 1.0,
     "movement_speed": 0.0,

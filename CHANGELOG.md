@@ -1,3 +1,8 @@
+2.2.2 - 1.21
+- Update for Spell Scrolls
+- Sacrifice Drain, Nordic Storm & Rumbling Swing are disabled as passive spells for the special axes
+- The spells will return in the future
+
 2.2.1
 - fixed rpg series aether weapon tag
 

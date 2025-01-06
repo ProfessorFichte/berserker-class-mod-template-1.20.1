@@ -4,6 +4,9 @@
   "learn": {
     "tier": 4
   },
+  "scroll":{
+    "generate": false
+  },
   "cast": {
     "duration": 1.5,
     "animation": "more_rpg_classes:sky_cast_one_handed",
