@@ -1,3 +1,10 @@
+# 2.3.0 - 1.21.1
+**- Spell Engine 1.4 Update!**
+- AzureLib Armor 3.0 Update!
+- Nordic Storm & Bloody Strike range now matching the melee weapon distance
+- Updated Berserker Spell Icons (Comissioned Work by SovSeabird)
+- **LICENSE CHANGE** All Textures are now under the ARR License
+
 2.2.2 - 1.21
 - Update for Spell Scrolls
 - Sacrifice Drain, Nordic Storm & Rumbling Swing are disabled as passive spells for the special axes

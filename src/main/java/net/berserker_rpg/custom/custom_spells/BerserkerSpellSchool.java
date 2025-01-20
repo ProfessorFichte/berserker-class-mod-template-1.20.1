@@ -1,6 +1,5 @@
 package net.berserker_rpg.custom.custom_spells;
 
-import net.berserker_rpg.BerserkerClassMod;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.attribute.EntityAttributes;

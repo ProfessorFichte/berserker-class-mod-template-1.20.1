@@ -1,6 +1,7 @@
 {
   "school": "BERSERKER_MELEE",
-  "range": 3.0,
+  "range": 0,
+  "range_melee": true,
   "learn": {
     "tier": 4,
     "enabled": false
@@ -77,6 +78,20 @@
       }
     },
     {
+      "target_conditions": [
+        {
+          "entity_type": "#minecraft:freeze_hurts_extra_types",
+          "modifier": {
+            "power_multiplier": 0.3
+          }
+        },
+        {
+          "entity_type": "#minecraft:freeze_immune_entity_types",
+          "modifier": {
+            "power_multiplier": -0.3
+          }
+        }
+      ],
       "action": {
         "school": "FROST",
         "type": "DAMAGE",
@@ -86,6 +101,12 @@
       }
     },
     {
+      "target_conditions": [
+        {
+          "entity_type": "#minecraft:freeze_immune_entity_types",
+          "allow_action": false
+        }
+      ],
       "action": {
         "type": "STATUS_EFFECT",
         "status_effect": {

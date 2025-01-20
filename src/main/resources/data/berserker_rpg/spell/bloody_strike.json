@@ -1,5 +1,6 @@
 {
-  "range": 2.5,
+  "range": 0,
+  "range_melee": true,
   "school": "BERSERKER_MELEE",
   "learn": {
     "tier": 3
@@ -69,6 +70,25 @@
           "show_particles": false
         },
         "apply_to_caster": true
+      }
+    },
+    {
+      "target_conditions": [
+        {
+          "entity_type": "#minecraft:undead",
+          "allow_action": false
+        }
+      ],
+      "action": {
+        "type": "STATUS_EFFECT",
+        "status_effect": {
+          "effect_id": "more_rpg_classes:bleeding",
+          "duration": 3,
+          "apply_mode": "SET",
+          "amplifier_power_multiplier": 0.2,
+          "amplifier": 0,
+          "show_particles": false
+        }
       }
     }
   ],
