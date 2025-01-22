@@ -24,7 +24,10 @@ public class Armors {
             Items.LEATHER, Items.CHAIN, MRPGCItems.WOLF_FUR
     );
     private static final Supplier<Ingredient> NORTHLING_INGREDIENTS = () -> Ingredient.ofItems(
-            Items.IRON_INGOT, Items.CHAIN, MRPGCItems.WOLF_FUR
+            Items.IRON_INGOT, Items.CHAIN, MRPGCItems.POLAR_BEAR_FUR
+    );
+    private static final Supplier<Ingredient> NETHERITE_NORTHLING_INGREDIENTS = () -> Ingredient.ofItems(
+            Items.NETHERITE_INGOT, MRPGCItems.POLAR_BEAR_FUR
     );
 
     public static final float berserker_atkspeed_T1 = 0.02F;
@@ -32,6 +35,9 @@ public class Armors {
     public static final float berserker_rage_T1 = 0.025F;
     public static final float berserker_rage_T2 = 0.05F;
     public static final float berserker_atkdamage_T2 = 0.03F;
+    public static final float berserker_atkspeed_T3 = 0.04F;
+    public static final float berserker_rage_T3 = 0.075F;
+    public static final float berserker_atkdamage_T3 = 0.05F;
 
 
     public static final ArrayList<Armor.Entry> entries = new ArrayList<>();
@@ -112,6 +118,49 @@ public class Armors {
                                             ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_speed")),berserker_atkspeed_T2),
                                             ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("more_rpg_classes:rage_modifier")),berserker_rage_T2 ),
                                             ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_damage")),berserker_atkdamage_T2)
+                                    ))
+                    ))   .bundle(material -> new Armor.Set<>(BerserkerClassMod.MOD_ID,
+                            new NorthlingArmor(material, ArmorItem.Type.HELMET, new Item.Settings()),
+                            new NorthlingArmor(material, ArmorItem.Type.CHESTPLATE, new Item.Settings()),
+                            new NorthlingArmor(material, ArmorItem.Type.LEGGINGS, new Item.Settings()),
+                            new NorthlingArmor(material, ArmorItem.Type.BOOTS, new Item.Settings())
+                    ))
+                    .put(entries).armorSet()
+                    .allowSpellPowerEnchanting(false);
+
+    public static final Armor.Set northlingNetheriteArmorSet =
+            create(
+                    new Armor.CustomMaterial(
+                            "netherite_northling",
+                            25,
+                            15,
+                            SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE,
+                            NETHERITE_NORTHLING_INGREDIENTS
+                    ),
+                    ItemConfig.ArmorSet.with(
+                            new ItemConfig.ArmorSet.Piece(2)
+                                    .addAll(List.of(
+                                            ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_speed")),berserker_atkspeed_T3),
+                                            ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("more_rpg_classes:rage_modifier")),berserker_rage_T3 ),
+                                            ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_damage")),berserker_atkdamage_T3)
+                                    )),
+                            new ItemConfig.ArmorSet.Piece(5)
+                                    .addAll(List.of(
+                                            ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_speed")),berserker_atkspeed_T3),
+                                            ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("more_rpg_classes:rage_modifier")),berserker_rage_T3 ),
+                                            ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_damage")),berserker_atkdamage_T3)
+                                    )),
+                            new ItemConfig.ArmorSet.Piece(3)
+                                    .addAll(List.of(
+                                            ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_speed")),berserker_atkspeed_T3),
+                                            ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("more_rpg_classes:rage_modifier")),berserker_rage_T3 ),
+                                            ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_damage")),berserker_atkdamage_T3)
+                                    )),
+                            new ItemConfig.ArmorSet.Piece(2)
+                                    .addAll(List.of(
+                                            ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_speed")),berserker_atkspeed_T3),
+                                            ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("more_rpg_classes:rage_modifier")),berserker_rage_T3 ),
+                                            ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_damage")),berserker_atkdamage_T3)
                                     ))
                     ))   .bundle(material -> new Armor.Set<>(BerserkerClassMod.MOD_ID,
                             new NorthlingArmor(material, ArmorItem.Type.HELMET, new Item.Settings()),

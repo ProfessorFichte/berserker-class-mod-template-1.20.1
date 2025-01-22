@@ -1,3 +1,8 @@
+1.2.0 - 1.20.1
+- backport Netherite Armor to 1.20.1
+- Updated Berserker Spell Icons (Commissioned Work by SovSeabird)
+- LICENSE CHANGE All Textures are now under the ARR License
+
 1.1.0
 Official Release of the Mod!
 ###GENERAL CHANGES
