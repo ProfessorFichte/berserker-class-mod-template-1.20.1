@@ -1,3 +1,11 @@
+1.2.1 - 1.20.1
+- added rpg series loot-tag for netherite armor
+- added Loot N Explore Variant Raid Axes
+- Svablods Axe & Norse Axe are now the LNE variants 
+- Svablods Axe got a retexture to match the Wither Weapons and is called Soul ripper now
+- the bound spells Nordic Storm, Rumbling Swing & Sacrifice Drain, from the special axes got removed from them, they will return later
+- the Thunder Raid Axe (Toranns Axe) got removed from loot tables, it's only available in creative now, it will return in the future
+
 1.2.0 - 1.20.1
 - backport Netherite Armor to 1.20.1
 - Updated Berserker Spell Icons (Commissioned Work by SovSeabird)
