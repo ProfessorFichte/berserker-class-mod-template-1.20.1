@@ -29,7 +29,7 @@
 	],
 	"depends": {
 		"fabricloader": ">=0.14.21",
-		"minecraft": "~1.20.1",
+		"minecraft": "=1.20.1",
 		"java": ">=17",
 		"fabric-api": "*",
 		"azurelibarmor": "*",
@@ -38,7 +38,8 @@
 		"more_rpg_classes": ">=1.1.4"
 	},
 	"suggests": {
-		"better_combat": "*"
+		"better_combat": "*",
+		"loot_n_explore": ">=0.1.6-1.20.1"
 	},
 	"custom": {
 		"modmenu": {

@@ -69,10 +69,7 @@ public class WeaponsRegister {
         return elder_guardian_berserker_axe(null, name, material, damage, fireproof);}
     private static Weapon.Entry elder_guardian_berserker_axe(String requiredMod, String name, Weapon.CustomMaterial material, float damage, boolean fireproof ) {
         var settings = new Item.Settings().fireproof().rarity(Rarity.EPIC);
-        Item item = new BerserkerAxeItem(material,settings);
-        if(FabricLoader.getInstance().isModLoaded(LNE)){
-            item = new ElderGuardianAxe(material,settings);
-        }
+        Item item = new ElderGuardianRaidAxe(material,settings);
         return entry(requiredMod, name, material, item, new ItemConfig.Weapon(damage, berserker_axe_attackSpeed));
     }
 
@@ -80,10 +77,7 @@ public class WeaponsRegister {
         return ender_dragon_berserker_axe(null, name, material, damage, fireproof);}
     private static Weapon.Entry ender_dragon_berserker_axe(String requiredMod, String name, Weapon.CustomMaterial material, float damage, boolean fireproof ) {
         var settings = new Item.Settings().fireproof().rarity(Rarity.EPIC);
-        Item item = new BerserkerAxeItem(material,settings);
-        if(FabricLoader.getInstance().isModLoaded(LNE)){
-            item = new DragonAxe(material,settings);
-        }
+        Item item = new DragonRaidAxe(material,settings);
         return entry(requiredMod, name, material, item, new ItemConfig.Weapon(damage, berserker_axe_attackSpeed));
     }
 
@@ -91,10 +85,7 @@ public class WeaponsRegister {
         return glacial_berserker_axe(null, name, material, damage, fireproof);}
     private static Weapon.Entry glacial_berserker_axe(String requiredMod, String name, Weapon.CustomMaterial material, float damage, boolean fireproof ) {
         var settings = new Item.Settings().fireproof().rarity(Rarity.EPIC);
-        Item item = new BerserkerAxeItem(material,settings);
-        if(FabricLoader.getInstance().isModLoaded(LNE)){
-            item = new GlacialAxe(material,settings);
-        }
+        Item item = new GlacialRaidAxe(material,settings);
         return entry(requiredMod, name, material, item, new ItemConfig.Weapon(damage, berserker_axe_attackSpeed));
     }
 
@@ -102,10 +93,7 @@ public class WeaponsRegister {
         return wither_berserker_axe(null, name, material, damage, fireproof);}
     private static Weapon.Entry wither_berserker_axe(String requiredMod, String name, Weapon.CustomMaterial material, float damage, boolean fireproof ) {
         var settings = new Item.Settings().fireproof().rarity(Rarity.EPIC);
-        Item item = new BerserkerAxeItem(material,settings);
-        if(FabricLoader.getInstance().isModLoaded(LNE)){
-            item = new WitherAxe(material,settings);
-        }
+        Item item = new WitherRaidAxe(material,settings);
         return entry(requiredMod, name, material, item, new ItemConfig.Weapon(damage, berserker_axe_attackSpeed));
     }
 

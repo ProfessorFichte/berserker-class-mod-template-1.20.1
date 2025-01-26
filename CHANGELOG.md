@@ -1,6 +1,7 @@
 1.2.1 - 1.20.1
 - added rpg series loot-tag for netherite armor
-- added Loot N Explore Variant Raid Axes
+- added Loot and Explore Variant Raid Axes, these are:
+- Norse Raid Axe, Soul Ripper, Dragons Conquest, Sunken Captain
 - Svablods Axe & Norse Axe are now the LNE variants 
 - Svablods Axe got a retexture to match the Wither Weapons and is called Soul ripper now
 - the bound spells Nordic Storm, Rumbling Swing & Sacrifice Drain, from the special axes got removed from them, they will return later
