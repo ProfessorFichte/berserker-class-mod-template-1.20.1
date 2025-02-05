@@ -38,6 +38,8 @@
   "effect.berserker_rpg.blood_reckoning.description": "Heals you and converts absorption hearts to health.",
   "effect.berserker_rpg.blood_sacrifice": "Blood Sacrifice",
   "effect.berserker_rpg.blood_sacrifice.description": "Converts your health to absorption hearts.",
+  "effect.berserker_rpg.outrage": "Outrage",
+  "effect.berserker_rpg.outrage.description": "Clears harmful status effects and extends Rage Effect duration, if you reached the max Rage-Effect amplifier.",
 
   "death.attack.berserker_cost": "%1$s brach zusammen durch Erschpöpfung.",
 

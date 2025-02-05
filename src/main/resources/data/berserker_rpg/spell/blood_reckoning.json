@@ -4,17 +4,19 @@
   "learn": {
     "tier": 2
   },
-  "cast": {
+  "type": "ACTIVE",
+  "active": {
     "duration": 0
   },
+  "target": {
+    "type": "AREA",
+    "area": {
+      "distance_dropoff": "SQUARED",
+      "angle_degrees": 360,
+      "vertical_range_multiplier": 0.5
+    }
+  },
   "release": {
-    "target": {
-      "type": "AREA",
-      "area": {
-        "distance_dropoff": "SQUARED",
-        "angle_degrees": 360
-      }
-    },
     "animation": "more_rpg_classes:two_handed_roar",
     "sound": {
       "id": "minecraft:entity.warden.roar"
@@ -29,6 +31,9 @@
         "max_speed": 0.4
       }
     ]
+  },
+  "deliver": {
+    "type": "DIRECT"
   },
   "impact": [
     {
@@ -65,7 +70,9 @@
   ],
   "cost": {
     "exhaust": 0.3,
-    "cooldown_duration": 20,
-    "cooldown_haste_affected": "false"
+    "cooldown":{
+      "duration": 20,
+      "haste_affected": "false"
+    }
   }
 }

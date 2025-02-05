@@ -1,3 +1,12 @@
+# 2.4.0 - 1.21.1
+- Spell Engine 1.5 Update
+- increase berserker Better Combat range to 3.0
+- removed old unused spells and their related files
+- removed the increased incoming damage from the Rage Buff, because the Berserker already takes big risks going low on health
+- added outrage status effect, removed all CustomImpacts, fully using Spell Engine API for the Berserker Spells
+- Outrage now consumes the Rage Effect at the End of the Casting
+- Buffed Movement Speed while casting Rage
+
 # 2.3.0 - 1.21.1
 **- Spell Engine 1.4 Update!**
 - AzureLib Armor 3.0 Update!

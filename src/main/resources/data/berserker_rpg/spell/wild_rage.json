@@ -1,20 +1,16 @@
 {
   "school": "BERSERKER_MELEE",
-  "range": 5.0,
+  "range": 0,
   "learn": {
     "tier": 1
   },
-  "cast": {
+  "type": "ACTIVE",
+  "active": {
     "duration": 0
   },
   "release": {
-    "custom_impact": true,
     "target": {
-      "type": "AREA",
-      "area": {
-        "distance_dropoff": "SQUARED",
-        "angle_degrees": 360
-      }
+      "type": "SELF"
     },
     "animation": "more_rpg_classes:two_handed_roar",
     "sound": {
@@ -49,33 +45,25 @@
     ]
   },
   "impact": [
+
     {
       "action": {
         "type": "STATUS_EFFECT",
         "status_effect": {
-          "effect_id": "more_rpg_classes:fear",
-          "duration": 6,
+          "effect_id": "berserker_rpg:rage",
+          "duration": 20,
           "apply_mode": "SET",
           "amplifier": 0,
           "show_particles": false
-        },
-        "apply_to_caster": false
-      },
-      "particles": [
-        {
-          "particle_id": "minecraft:sculk_soul",
-          "shape": "SPHERE",
-          "origin": "CENTER",
-          "count": 3,
-          "min_speed": 0.2,
-          "max_speed": 0.7
         }
-      ]
+      }
     }
   ],
   "cost": {
-    "exhaust": 0.4,
-    "cooldown_duration": 30,
-    "cooldown_haste_affected": "false"
+    "exhaust": 0.2,
+    "cooldown": {
+      "duration": 30,
+      "haste_affected": "false"
+    }
   }
 }

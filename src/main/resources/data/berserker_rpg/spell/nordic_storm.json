@@ -4,55 +4,58 @@
   "range_melee": true,
   "learn": {
     "tier": 4,
-    "enabled": false
+    "enabled": true
   },
-  "scroll":{
-    "generate": false
-  },
-  "cast": {
-    "duration": 0.5,
-    "movement_speed": 1.2,
-    "animation": "berserker_rpg:nordic_storm",
-    "sound": {
-      "id": "spell_engine:generic_frost_impact",
-      "randomness": 0
+  "active": {
+    "scroll":{
+      "generate": false
     },
-    "start_sound": {
-      "id": "entity.player.breath"
-    },
-    "particles": [
-      {
-        "particle_id": "sweep_attack",
-        "angle": 360,
-        "shape": "PIPE",
-        "rotation": "TRUE",
-        "origin": "CENTER",
-        "count": 1.0,
-        "min_speed": 0.3,
-        "max_speed": 3.0
+    "cast": {
+      "duration": 0.5,
+      "movement_speed": 1.2,
+      "animation": "berserker_rpg:nordic_storm",
+      "sound": {
+        "id": "spell_engine:generic_frost_impact",
+        "randomness": 0
       },
-      {
-        "particle_id": "spell_engine:frost_shard",
-        "angle": 360,
-        "shape": "SPHERE",
-        "rotation": "TRUE",
-        "origin": "CENTER",
-        "count": 1.0,
-        "min_speed": 0.3,
-        "max_speed": 3.0
-      }
-    ],
-    "channel_ticks": 5
+      "start_sound": {
+        "id": "entity.player.breath"
+      },
+      "particles": [
+        {
+          "particle_id": "sweep_attack",
+          "angle": 360,
+          "shape": "PIPE",
+          "rotation": "TRUE",
+          "origin": "CENTER",
+          "count": 1.0,
+          "min_speed": 0.3,
+          "max_speed": 3.0
+        },
+        {
+          "particle_id": "spell_engine:frost_shard",
+          "angle": 360,
+          "shape": "SPHERE",
+          "rotation": "TRUE",
+          "origin": "CENTER",
+          "count": 1.0,
+          "min_speed": 0.3,
+          "max_speed": 3.0
+        }
+      ],
+      "channel_ticks": 5
+    }
+  },
+  "target": {
+    "type": "AREA",
+    "area": {
+      "distance_dropoff": "SQUARED",
+      "angle_degrees": 360,
+      "vertical_range_multiplier": 0.5
+    }
   },
   "release": {
-    "custom_impact": false,
-    "target": {
-      "type": "AREA",
-      "area": {
-        "distance_dropoff": "SQUARED",
-        "angle_degrees": 360
-      }
-    }
+    "custom_impact": false
   },
   "impact": [
     {
@@ -120,10 +123,12 @@
     }
   ],
   "cost": {
-    "exhaust" : 1.0,
-    "cooldown_duration": 8,
-    "durability": 5,
-    "cooldown_proportional": true,
-    "cooldown_haste_affected": "false"
+    "cooldown":{
+      "duration": 10,
+      "haste_affected": "false",
+      "proportional": true
+    },
+    "exhaust": 1.0,
+    "durability": 5
   }
 }
