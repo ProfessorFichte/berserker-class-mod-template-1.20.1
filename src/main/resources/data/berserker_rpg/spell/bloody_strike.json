@@ -5,10 +5,11 @@
   "learn": {
     "tier": 3
   },
+
   "type": "ACTIVE",
   "active": {
-    "duration": 0
   },
+
   "target": {
     "type": "AIM",
     "aim": {
@@ -16,6 +17,7 @@
       "required": true
     }
   },
+
   "release": {
     "custom_impact": true,
     "target": {
@@ -36,6 +38,7 @@
       }
     ]
   },
+
   "impact": [
     {
       "action": {
@@ -100,6 +103,7 @@
       }
     }
   ],
+
   "cost": {
     "cooldown":{
       "duration": 13,
