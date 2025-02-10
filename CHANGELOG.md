@@ -1,3 +1,6 @@
+1.2.2 - 1.20.1
+- fix northling armor renderer
+
 1.2.1 - 1.20.1
 - added rpg series loot-tag for netherite armor
 - added Loot and Explore Variant Raid Axes, these are:
