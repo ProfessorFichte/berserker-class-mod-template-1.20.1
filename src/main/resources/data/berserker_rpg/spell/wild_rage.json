@@ -1,21 +1,14 @@
 {
   "school": "BERSERKER_MELEE",
-  "range": 0,
-  "learn": {
-    "tier": 1
-  },
-  "type": "ACTIVE",
+  "range": 0.0,
+  "tier": 1,
+  "learn": {},
   "active": {
-    "duration": 0
+    "scroll": {}
   },
+
   "release": {
-    "target": {
-      "type": "SELF"
-    },
     "animation": "more_rpg_classes:two_handed_roar",
-    "sound": {
-      "id": "minecraft:entity.warden.roar"
-    },
     "particles": [
       {
         "particle_id": "minecraft:angry_villager",
@@ -34,36 +27,52 @@
         "max_speed": 0.15
       },
       {
-        "particle_id": "spell_engine:buff_rage",
-        "shape": "PIPE",
+        "particle_id": "spell_engine:magic_rage_stripe_float",
         "origin": "FEET",
-        "count": 4,
-        "min_speed": 0.05,
-        "max_speed": 0.1,
+        "shape": "WIDE_PIPE",
+        "count": 25.0,
+        "min_speed": 0.2,
+        "max_speed": 0.25,
         "extent": -0.2
       }
-    ]
+    ],
+    "sound": {
+      "id": "minecraft:entity.warden.roar"
+    }
   },
-  "impact": [
 
+  "deliver": {
+    "type": "STASH_EFFECT",
+    "stash_effect": {
+      "id": "berserker_rpg:rage",
+      "triggers": [
+        {
+          "target_override": "CASTER",
+          "type": "MELEE_IMPACT"
+        }
+      ],
+      "consume": 0
+    }
+  },
+
+  "impacts": [
     {
       "action": {
         "type": "STATUS_EFFECT",
         "status_effect": {
           "effect_id": "berserker_rpg:rage",
-          "duration": 20,
-          "apply_mode": "SET",
-          "amplifier": 0,
-          "show_particles": false
+          "amplifier": 9,
+          "refresh_duration": false,
+          "apply_mode": "ADD"
         }
       }
     }
   ],
+
   "cost": {
     "exhaust": 0.2,
     "cooldown": {
-      "duration": 30,
-      "haste_affected": "false"
+      "duration": 30.0
     }
   }
 }

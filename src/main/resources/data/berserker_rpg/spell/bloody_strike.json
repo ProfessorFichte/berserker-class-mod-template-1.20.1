@@ -1,13 +1,13 @@
 {
-  "range": 0,
-  "range_melee": true,
+  "range": 0.0,
+  "range_mechanic": "MELEE",
   "school": "BERSERKER_MELEE",
-  "learn": {
-    "tier": 3
-  },
+  "tier": 3,
+  "learn": {},
 
   "type": "ACTIVE",
   "active": {
+    "scroll": {}
   },
 
   "target": {
@@ -39,7 +39,7 @@
     ]
   },
 
-  "impact": [
+  "impacts": [
     {
       "action": {
         "type": "DAMAGE",
