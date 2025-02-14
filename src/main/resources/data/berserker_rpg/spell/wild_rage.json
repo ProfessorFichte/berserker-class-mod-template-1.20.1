@@ -62,6 +62,7 @@
         "status_effect": {
           "effect_id": "berserker_rpg:rage",
           "amplifier": 9,
+          "duration": 15,
           "refresh_duration": false,
           "apply_mode": "ADD"
         }
@@ -72,7 +73,7 @@
   "cost": {
     "exhaust": 0.2,
     "cooldown": {
-      "duration": 30.0
+      "duration": 25.0
     }
   }
 }

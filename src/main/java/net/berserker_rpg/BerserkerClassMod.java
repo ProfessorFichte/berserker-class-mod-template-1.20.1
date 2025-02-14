@@ -16,7 +16,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.text.Text;
-import net.spell_engine.api.item.ItemConfig;
+import net.berserker_rpg.config.TweaksConfig;
+import net.spell_engine.api.config.ConfigFile;
 import net.tinyconfig.ConfigManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,8 +27,8 @@ public class BerserkerClassMod implements ModInitializer {
 	public static final String MOD_ID = "berserker_rpg";
 	public static final Logger LOGGER = LoggerFactory.getLogger("berserker_rpg");
 
-	public static ConfigManager<ItemConfig> itemConfig = new ConfigManager<ItemConfig>
-			("items_v5", Default.itemConfig)
+	public static ConfigManager<ConfigFile.Equipment> itemConfig = new ConfigManager<>
+			("equipment", Default.itemConfig)
 			.builder()
 			.setDirectory(MOD_ID)
 			.sanitize(true)
@@ -35,6 +36,12 @@ public class BerserkerClassMod implements ModInitializer {
 
 	public static ConfigManager<EffectsConfig> effectsConfig = new ConfigManager<EffectsConfig>
 			("effects_v3", new EffectsConfig())
+			.builder()
+			.setDirectory(MOD_ID)
+			.sanitize(true)
+			.build();
+	public static ConfigManager<TweaksConfig> tweaksConfig = new ConfigManager<>
+			("tweaks", new TweaksConfig())
 			.builder()
 			.setDirectory(MOD_ID)
 			.sanitize(true)

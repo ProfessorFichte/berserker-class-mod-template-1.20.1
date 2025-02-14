@@ -6,6 +6,8 @@
 - added outrage status effect, removed all CustomImpacts, fully using Spell Engine API for the Berserker Spells
 - Outrage now consumes the Rage Effect at the End of the Casting
 - Buffed Movement Speed while casting Rage
+- Add TweaksConfig, so special Weapons can also be used without Better End & Nether and the Aether
+- Update to Fabric Loom 1.9
 
 # 2.3.0 - 1.21.1
 **- Spell Engine 1.4 Update!**

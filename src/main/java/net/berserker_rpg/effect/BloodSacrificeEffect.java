@@ -31,7 +31,7 @@ public class BloodSacrificeEffect extends StatusEffect {
     public void onApplied(LivingEntity entity, int amplifier) {
         var spellEntry = SpellRegistry.from(entity.getWorld()).getEntry(Identifier.of(MOD_ID, "bloody_strike")).orElse(null);
         var spell = spellEntry.value();
-        float modifier = spell.impact[0].action.damage.spell_power_coefficient;
+        float modifier = 0.65F;
         var attack_damage = entity.getAttributeValue(EntityAttributes.GENERIC_ATTACK_DAMAGE);
         float actual_health_player = entity.getHealth();
         double amount = modifier * attack_damage;
